@@ -1,0 +1,7 @@
+bin
+
+appsettings.Development.json
+
+appsettings.json
+
+Backend.http
