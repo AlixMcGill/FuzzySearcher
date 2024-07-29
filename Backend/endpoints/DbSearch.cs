@@ -26,8 +26,17 @@ public static class DbSearch
         group.MapGet("/{id}", (int id, [FromServices] MySqlConnection connection) =>
         {
             var users = connection.Query<UserDtos>($"SELECT * FROM user WHERE Id = {id}");
-            if (users != null)
+            if (users.Any())
                 return Results.Ok(users);
+            else
+                return Results.NotFound();
+        });
+
+        group.MapGet("/filter={filter}", (string filter, [FromServices] MySqlConnection connection) => 
+        {
+            var filteredUsers = connection.Query<UserDtos>($"SELECT * FROM user WHERE `FirstName` LIKE '%{filter}%'");
+            if (filteredUsers.Any())
+                return Results.Ok(filteredUsers);
             else
                 return Results.NotFound();
         });

@@ -3,9 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>AmericanEagleProject</title>
+    <link rel="stylesheet" href="./css/syle.css">
 </head>
 <body>
-    
+    <div class="fuzzySearch">
+        <form action="http://localhost:5273/DbSearch">
+            <input type="text">
+            <input type="submit" value="Search">
+        </form>
+        <div class="fuzzySearchResponses">
+
+        </div>
+    </div>
+
+    <button id="myBtn">Fetch Data</button>
+
+    <script src="./js/fetchData.mjs"></script>
 </body>
 </html>
