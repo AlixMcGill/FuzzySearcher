@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AmericanEagleProject</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="fuzzySearch">
+        <form action="http://localhost:5273/DbSearch">
+            <input type="text">
+            <input type="submit" value="Search">
+        </form>
+        <div class="fuzzySearchResponses">
+
+        </div>
+    </div>
+
+    <button id="myBtn">Fetch Data</button>
+
+    <h2 class="data-title">User Data</h2>
+    <div id="content-container"></div>
+
+    <script src="./js/fetchData.mjs"></script>
+</body>
+</html>
