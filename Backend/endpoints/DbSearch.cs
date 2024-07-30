@@ -79,6 +79,14 @@ public static class DbSearch
             return Results.Ok(updateUsers);
         });
 
+        // DELETE REQUESTS
+
+        group.MapDelete("/{Id}", async (int Id, [FromServices] MySqlConnection connection) => {
+            await connection.ExecuteAsync("DELETE FROM user WHERE Id = @Id", new { Id = Id });
+
+            return Results.Ok();
+        });
+
         return group;
     }
 }
