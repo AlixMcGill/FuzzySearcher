@@ -1,6 +1,10 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\css\\NavBar.css",
+      "PackagePath": "staticwebassets\\css\\NavBar.css"
+    },
+    {
       "Id": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\css\\style.css",
       "PackagePath": "staticwebassets\\css\\style.css"
     },
@@ -11,6 +15,10 @@
     {
       "Id": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\js\\fetchDatas.mjs",
       "PackagePath": "staticwebassets\\js\\fetchDatas.mjs"
+    },
+    {
+      "Id": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\login.html",
+      "PackagePath": "staticwebassets\\login.html"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Backend.Microsoft.AspNetCore.StaticWebAssets.props",
