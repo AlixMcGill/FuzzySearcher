@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: rgb(80, 85, 90);
+    background-color: #00202e;
 }
 
 .fuzzySearch {
@@ -13,4 +13,23 @@ body {
 
 .data-title {
     color: white;
+}
+
+
+#content-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.user-element {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: .5rem;
+    margin: .2rem;
+    border-radius: .5rem;
+    width: fit-content;
+}
+
+.user-element:hover {
+    padding: 1rem;
+    cursor: pointer;
 }
