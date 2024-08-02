@@ -5,8 +5,12 @@
       "PackagePath": "staticwebassets\\css\\NavBar.css"
     },
     {
-      "Id": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\css\\style.css",
-      "PackagePath": "staticwebassets\\css\\style.css"
+      "Id": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\css\\Roboto.css",
+      "PackagePath": "staticwebassets\\css\\Roboto.css"
+    },
+    {
+      "Id": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\css\\styles.css",
+      "PackagePath": "staticwebassets\\css\\styles.css"
     },
     {
       "Id": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\index.html",

@@ -5,9 +5,9 @@ namespace Backend.Dto;
 public class PostDto
 {
     public int Id { get; set;}
-    [Required] public int UserId { get; set;}
-    [Required] public string? PostTitle { get; set;}
-    [Required] public string? PostBody { get; set;}
-    [Required] public string? PostLikes { get; set;}
-    [Required] public DateTime PostDate { get; set;}
+    [Required] public int User_Id { get; set;}
+    [Required] public string? Post_Title { get; set;}
+    [Required] public string? Post_Body { get; set;}
+    [Required] public int Post_Likes { get; set;}
+    [Required] public DateTime Date_Time { get; set;}
 }

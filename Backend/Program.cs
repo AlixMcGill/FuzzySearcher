@@ -27,6 +27,6 @@ app.UseStaticFiles();
 app.UseHttpsRedirection();
 
 app.DbSearchRoute();
-
+app.UserPostsRoute();
 
 app.Run();

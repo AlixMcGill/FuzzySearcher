@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "5x2yubSsGdqnsxjNT6wGrsQSHXfPa8Bk9XWsOhYYhcs=",
+  "Hash": "E1Ufq+pEHOIGPBvtl0V86Ts/kFpL6TeY7VQAEvxhzAg=",
   "Source": "Backend",
   "BasePath": "_content/Backend",
   "Mode": "Default",
@@ -36,12 +36,12 @@
       "OriginalItemSpec": "wwwroot\\css\\NavBar.css"
     },
     {
-      "Identity": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\css\\style.css",
+      "Identity": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\css\\Roboto.css",
       "SourceId": "Backend",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\",
       "BasePath": "_content/Backend",
-      "RelativePath": "css/style.css",
+      "RelativePath": "css/Roboto.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -52,7 +52,26 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\style.css"
+      "OriginalItemSpec": "wwwroot\\css\\Roboto.css"
+    },
+    {
+      "Identity": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\css\\styles.css",
+      "SourceId": "Backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\",
+      "BasePath": "_content/Backend",
+      "RelativePath": "css/styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\styles.css"
     },
     {
       "Identity": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\index.html",
