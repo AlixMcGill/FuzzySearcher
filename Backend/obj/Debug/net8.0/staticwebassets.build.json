@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "gKc1Cbcf/xavgVnh4Q61Rf8R4tuR7mFxcsIj6OJpVFU=",
+  "Hash": "T9cgHLAkKUgV/Jm0oyLq0zloI9lmUNbe0bYJlsi6Rdg=",
   "Source": "Backend",
   "BasePath": "_content/Backend",
   "Mode": "Default",
@@ -167,25 +167,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\fetch.mjs"
-    },
-    {
-      "Identity": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\js\\fetchDatas.mjs",
-      "SourceId": "Backend",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\",
-      "BasePath": "_content/Backend",
-      "RelativePath": "js/fetchDatas.mjs",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\fetchDatas.mjs"
     },
     {
       "Identity": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\js\\fetchUserPosts.mjs",

@@ -33,10 +33,6 @@
       "PackagePath": "staticwebassets\\js\\fetch.mjs"
     },
     {
-      "Id": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\js\\fetchDatas.mjs",
-      "PackagePath": "staticwebassets\\js\\fetchDatas.mjs"
-    },
-    {
       "Id": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\js\\fetchUserPosts.mjs",
       "PackagePath": "staticwebassets\\js\\fetchUserPosts.mjs"
     },
