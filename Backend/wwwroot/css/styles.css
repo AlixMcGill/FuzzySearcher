@@ -7,6 +7,10 @@ body {
     background-color: #00141d;
 }
 
+.text-color {
+    color: white;
+}
+
 .data-title {
     color: white;
 }

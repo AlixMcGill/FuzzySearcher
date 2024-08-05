@@ -1,6 +1,10 @@
 {
   "Files": [
     {
+      "Id": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\css\\CreateAcc.css",
+      "PackagePath": "staticwebassets\\css\\CreateAcc.css"
+    },
+    {
       "Id": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\css\\NavBar.css",
       "PackagePath": "staticwebassets\\css\\NavBar.css"
     },
@@ -15,6 +19,14 @@
     {
       "Id": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\js\\events.mjs",
+      "PackagePath": "staticwebassets\\js\\events.mjs"
+    },
+    {
+      "Id": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\js\\fetch.mjs",
+      "PackagePath": "staticwebassets\\js\\fetch.mjs"
     },
     {
       "Id": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\js\\fetchDatas.mjs",

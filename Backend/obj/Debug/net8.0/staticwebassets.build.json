@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "E1Ufq+pEHOIGPBvtl0V86Ts/kFpL6TeY7VQAEvxhzAg=",
+  "Hash": "uImoiiEf5/RoG+CrPZSBCErLxWvlLMe4sLb72tqiF5Q=",
   "Source": "Backend",
   "BasePath": "_content/Backend",
   "Mode": "Default",
@@ -16,6 +16,25 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\css\\CreateAcc.css",
+      "SourceId": "Backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\",
+      "BasePath": "_content/Backend",
+      "RelativePath": "css/CreateAcc.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\CreateAcc.css"
+    },
     {
       "Identity": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\css\\NavBar.css",
       "SourceId": "Backend",
@@ -91,6 +110,44 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\js\\events.mjs",
+      "SourceId": "Backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\",
+      "BasePath": "_content/Backend",
+      "RelativePath": "js/events.mjs",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\events.mjs"
+    },
+    {
+      "Identity": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\js\\fetch.mjs",
+      "SourceId": "Backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\",
+      "BasePath": "_content/Backend",
+      "RelativePath": "js/fetch.mjs",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\fetch.mjs"
     },
     {
       "Identity": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\js\\fetchDatas.mjs",

@@ -57,6 +57,22 @@ public static class DbSearch
             }
         });
 
+        group.MapPost("/Login", (UserDtos UserLogin, [FromServices] MySqlConnection connection) => {
+            if (UserLogin.UserName != null && UserLogin.Password != null || 
+                UserLogin.Password != "" && UserLogin.UserName != "" || 
+                UserLogin.UserName != null || UserLogin.Password != null || 
+                UserLogin.Password != "" || UserLogin.UserName != "") {
+                    var users = connection.Query<UserDtos>(@"
+                    SELECT Username, Password FROM user WHERE Username = @Username AND Password = @Password LIMIT 1;",
+                    new {Username = UserLogin.UserName,
+                         Password = UserLogin.Password});
+
+                    return Results.Ok(users);
+            } else {
+                return Results.BadRequest();
+            }
+        });
+
         // PUT REQUESTS
 
         group.MapPut("/{Id}", async (int Id, UserDtos updateUsers, [FromServices] MySqlConnection connection) => {

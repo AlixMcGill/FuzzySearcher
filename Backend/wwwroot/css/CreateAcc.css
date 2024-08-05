@@ -1,0 +1,16 @@
+#create-acc-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 5%;
+    gap: 1rem;
+}
+
+#create-acc-section form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: .3rem;
+    width: 10%;
+}

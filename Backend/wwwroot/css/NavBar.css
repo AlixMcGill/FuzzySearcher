@@ -17,4 +17,5 @@ header {
 
 .nav-list-item:hover {
     cursor: pointer;
+    color: #ff6361;
 }
