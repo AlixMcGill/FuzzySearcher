@@ -1,0 +1,33 @@
+/* HTML: <div class="loader"></div> */
+.loader {
+    width: 70px;
+    aspect-ratio: 1;
+    background:
+      radial-gradient(farthest-side,#ff6361 90%,#0000) center/16px 16px,
+      radial-gradient(farthest-side,#bc5090   90%,#0000) bottom/12px 12px;
+    background-repeat: no-repeat;
+    animation: l17 1s infinite linear;
+    position: relative;
+  }
+  .loader::before {    
+    content:"";
+    position: absolute;
+    width: 8px;
+    aspect-ratio: 1;
+    inset: auto 0 16px;
+    margin: auto;
+    background: #ffd380;
+    border-radius: 50%;
+    transform-origin: 50% calc(100% + 10px);
+    animation: inherit;
+    animation-duration: 0.5s;
+  }
+  @keyframes l17 { 
+    100%{transform: rotate(1turn)}
+  }
+
+.loader-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 8rem;
+}

@@ -1,8 +1,7 @@
 let usersArray;
+const loader = document.getElementById('loader-ctrn');
 
 function createNewPost(parent, posts){
-    
-
     for (let i = 0; i < posts.length; i++) {
         const post = document.createElement('div');
         post.className = 'post';
@@ -54,7 +53,8 @@ function createNewPost(parent, posts){
 
         parent.appendChild(post);
     }
-    
+
+    loader.innerText = '';
 }
 
 
@@ -84,8 +84,8 @@ async function fetchPosts() {
 }
 
 window.onload = function() {
-    getUsername();
-    fetchPosts();
+    setTimeout(getUsername, 2000)
+    //getUsername();
 };
 
 // Definitely not the best implementation
@@ -111,4 +111,6 @@ async function getUsername() {
     } catch (error) {
         console.error(error.message);
     }
+
+    fetchPosts();
 }

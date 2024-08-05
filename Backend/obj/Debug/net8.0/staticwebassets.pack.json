@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\css\\IndexPageStyles.css"
     },
     {
+      "Id": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\css\\Loader.css",
+      "PackagePath": "staticwebassets\\css\\Loader.css"
+    },
+    {
       "Id": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\css\\NavBar.css",
       "PackagePath": "staticwebassets\\css\\NavBar.css"
     },
