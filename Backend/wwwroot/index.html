@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/Roboto.css">
     <link rel="stylesheet" href="./css/NavBar.css">
@@ -23,9 +24,40 @@
 <body>
     <div class="fuzzySearch post-header-container">
         <form action="http://localhost:5273/DbSearch">
-            <input type="text">
-            <input type="submit" value="Search">
+            <input class="inputText" type="text" placeholder="Search Posts">
+            <input class="searchButton" type="button" value="Search">
         </form>
+    </div>
+    <div id="post-ctrn" class="post-container">
+        <div class="post"> <!-- MOCK POST DELETE LATER -->
+            <div class="post-header">
+                <p class="post-username">Username</p>
+                <p class="post-title">title</p>
+            </div>
+            <p class="post-body">this is where the body of a post goes</p>
+            <div class="post-footer">
+                <span class="post-date">08/01/24</span>
+                <button class="post-likes">
+                    <span class="material-symbols-outlined">favorite</span>
+                    <span class="post-likes-amount">52</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="post"> <!-- MOCK POST DELETE LATER -->
+            <div class="post-header">
+                <p class="post-username">Username</p>
+                <p class="post-title">title</p>
+            </div>
+            <p class="post-body">this is where the body of a post goes</p>
+            <div class="post-footer">
+                <span class="post-date">08/01/24</span>
+                <button class="post-likes">
+                    <span class="material-symbols-outlined">favorite</span>
+                    <span class="post-likes-amount">52</span>
+                </button>
+            </div>
+        </div>
     </div>
 
     <button id="myBtn">Fetch Data</button>
@@ -34,5 +66,6 @@
     <div id="content-container"></div>
 
     <script src="./js/fetchDatas.mjs"></script>
+    <script src="./js/fetchUserPosts.mjs"></script>
 </body>
 </html>
