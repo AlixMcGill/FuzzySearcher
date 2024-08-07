@@ -148,3 +148,46 @@ function likeButtonEvents() {
         console.log(post.id);
     });
 }
+
+// Create New Post
+
+const createNewPostForm = document.getElementById('create-new-post');
+
+function createPostForm(parent) {
+    const createPostContainer = document.createElement('div');
+    createPostContainer.className = 'create-post-container';
+
+    const createPostHeader = document.createElement('div');
+    createPostHeader.className = 'create-post-header';  
+
+    const createPostTitleText = document.createElement('p');
+    createPostTitleText.className = 'create-post-title-text';
+    createPostTitleText.innerText = 'Create Post'
+    createPostHeader.appendChild(createPostTitleText);
+
+    const closePostCreation = document.createElement('span');
+    closePostCreation.className = 'material-symbols-outlined';
+    closePostCreation.innerText = 'close';
+    createPostHeader.appendChild(closePostCreation);
+
+    createPostContainer.appendChild(createPostHeader);
+
+    const createPostTitleInput = document.createElement('input');
+    createPostTitleInput.type = 'text';
+    createPostTitleInput.className = 'create-post-title';
+    createPostTitleInput.id = 'create-post-title';
+    createPostContainer.appendChild(createPostTitleInput);
+
+    const createPostInput = document.createElement('input');
+    createPostInput.type = 'text';
+    createPostInput.className = 'create-post-text';
+    createPostInput.id = 'create-post-text';
+    createPostContainer.appendChild(createPostInput);
+
+    const createPostButton = document.createElement('button');
+    createPostButton.className = 'create-post-button';
+    createPostButton.innerText = 'Post';
+    createPostContainer.appendChild(createPostButton);
+
+    parent.appendChild(createPostContainer);
+}

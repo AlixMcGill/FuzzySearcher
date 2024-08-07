@@ -21,21 +21,23 @@
     width: 5rem;
     padding: .8rem;
     border: 1px solid #003f5c;
-    border-radius: 1rem;
-    border-top-left-radius: .2rem;
-    border-bottom-left-radius: .2rem;
+    border-radius: .2rem;
     font-size: .8rem;
     background-color: #2c4875;
     color: rgb(195, 195, 195);
 }
 
 .searchButton:hover {
-    border: 2px solid #003f5c;
+    border: 2px solid whitesmoke;
+    color: whitesmoke;
     cursor: pointer;
     padding: .7rem;
 }
 
-
+.searchButton:active {
+    padding: .6rem;
+    margin: .1rem 0rem;
+}
 
 /* Post styling */
 
@@ -110,11 +112,30 @@
 
 .new-post {
     all: unset;
-    width: 5rem;
-    padding: .8rem;
+    text-align: center;
+    width: 4rem;
+    margin-left: .2rem;
+    padding: .8rem .2rem;
     border: 1px solid #003f5c;
     border-radius: 1rem;
+    border-top-left-radius: .2rem;
+    border-bottom-left-radius: .2rem;
     font-size: .8rem;
     background-color: #2c4875;
     color: rgb(195, 195, 195);
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.new-post:hover {
+    cursor: pointer;
+    border: 2px solid whitesmoke;
+    color: whitesmoke;
+    padding: .7rem .15rem;
+}
+
+.new-post:active {
+    padding: .6rem .05rem;
+    margin: .1rem .2rem;
 }
