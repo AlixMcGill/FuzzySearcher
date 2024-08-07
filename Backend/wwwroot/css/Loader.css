@@ -1,5 +1,6 @@
 /* HTML: <div class="loader"></div> */
 .loader {
+    margin-top: 20rem;
     width: 70px;
     aspect-ratio: 1;
     background:
@@ -29,5 +30,4 @@
 .loader-container {
     display: flex;
     justify-content: center;
-    margin-top: 8rem;
 }

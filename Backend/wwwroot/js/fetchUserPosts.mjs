@@ -5,6 +5,7 @@ function createNewPost(parent, posts){
     for (let i = 0; i < posts.length; i++) {
         const post = document.createElement('div');
         post.className = 'post';
+        post.id = posts[i].id;
 
         const postHeader = document.createElement('div');
         postHeader.className = 'post-header';
@@ -47,14 +48,16 @@ function createNewPost(parent, posts){
         likesAmount.innerText = posts[i].post_Likes;
         postLikesButton.appendChild(likesAmount);
 
+        //postLikesButton.onClick = incrementLikes(post.id);
+
         postFooter.appendChild(postLikesButton);
 
         post.appendChild(postFooter);
 
         parent.appendChild(post);
     }
-
     loader.innerText = '';
+    //likeButtonEvents();
 }
 
 
@@ -84,7 +87,7 @@ async function fetchPosts() {
 }
 
 window.onload = function() {
-    setTimeout(getUsername, 2000)
+    setTimeout(getUsername, 1500)
     //getUsername();
 };
 
@@ -113,4 +116,35 @@ async function getUsername() {
     }
 
     fetchPosts();
+}
+
+async function incrementLikes(postId) {
+    url = `http://localhost:5273/UserPosts/IncrementLikes/${postId}`
+
+    try {
+        const response = await fetch(url, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({})
+        });
+
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+
+        console.log(response);
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+
+function likeButtonEvents() {
+    const posts = document.querySelectorAll('.post');
+    posts.forEach(post => {
+        const btn = post.querySelector('.post-likes');
+        btn.onClick = incrementLikes(post.id);
+        console.log(post.id);
+    });
 }

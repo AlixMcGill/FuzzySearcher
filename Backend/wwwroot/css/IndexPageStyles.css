@@ -59,9 +59,17 @@
     color: whitesmoke;
 }
 
+.post-body {
+    text-align: center;
+    padding: 1rem;
+}
+
 .post-title {
     display: flex;
     justify-content: center;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
 }
 
 .post-footer {
@@ -98,4 +106,15 @@
 .post-footer button:hover {
     cursor: pointer;
     color: #ff6361;
+}
+
+.new-post {
+    all: unset;
+    width: 5rem;
+    padding: .8rem;
+    border: 1px solid #003f5c;
+    border-radius: 1rem;
+    font-size: .8rem;
+    background-color: #2c4875;
+    color: rgb(195, 195, 195);
 }
