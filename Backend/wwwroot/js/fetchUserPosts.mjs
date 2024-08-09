@@ -1,4 +1,6 @@
 let usersArray;
+let currentUserId = 13; // Will implement properly late DELETE WHEN LOGIN COMPLETE!!!!
+const hostAddress = 'http://localhost:5273';
 const loader = document.getElementById('loader-ctrn');
 
 function createNewPost(parent, posts){
@@ -63,6 +65,7 @@ function createNewPost(parent, posts){
 
 async function fetchPosts() {
     const postContainer = document.getElementById('post-ctrn')
+    postContainer.innerHTML = '';
     const url = 'http://localhost:5273/UserPosts';
 
     try {
@@ -140,14 +143,14 @@ async function incrementLikes(postId) {
     }
 }
 
-function likeButtonEvents() {
+function likeButtonEvents() { // Not Currently working
     const posts = document.querySelectorAll('.post');
     posts.forEach(post => {
         const btn = post.querySelector('.post-likes');
         btn.onClick = incrementLikes(post.id);
         console.log(post.id);
     });
-}
+} 
 
 // Create New Post
 
@@ -227,6 +230,7 @@ function createPostForm() {
 
     const createPostButton = document.createElement('button');
     createPostButton.className = 'create-post-button';
+    createPostButton.id = 'create-post-button-id'
     createPostButton.innerText = 'Post';
     createPostFooter.appendChild(createPostButton);
     createPostContainer.appendChild(createPostFooter);
@@ -243,6 +247,11 @@ function closeCreatePost() {
        const postCreationContainer = document.getElementById('create-new-post-section');
        postCreationContainer.innerHTML = "";
     });
+}
+
+function forceCloseCreatePost() {
+    const postCreationContainer = document.getElementById('create-new-post-section');
+       postCreationContainer.innerHTML = "";
 }
 
 function updateChractersRemaining() {
@@ -263,10 +272,58 @@ function updateChractersRemaining() {
     })
 }
 
+function isInputEmpty(input) {
+    return !input.value && !input.validity.badInput;
+}
+
+function postNewUserPost(currentUserID) {
+    const createPostButton = document.getElementById('create-post-button-id');
+    createPostButton.addEventListener('click', async () => {
+        const title = document.getElementById('create-post-title');
+        const content = document.getElementById('create-post-text');
+        const titleValue = title.value;
+        const contentValue = content.value;
+        const url = `${hostAddress}/UserPosts`;
+
+        if (!isInputEmpty(title) && !isInputEmpty(content)) {
+            try {
+                const response = await fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        "user_Id": `${currentUserID}`,
+                        "post_Title": `${titleValue}`,
+                        "post_Body": `${contentValue}`
+                    })
+                })
+    
+                if (!response.ok) {
+                    throw new Error(`Response status: ${response.status}`);
+                }
+    
+                if (response.ok) {
+                    forceCloseCreatePost()
+                    alert('post Sucessful!')
+                    getUsername()
+                }
+            } catch (error) {
+                console.error(error.message);
+            }
+        } else {
+            forceCloseCreatePost()
+            alert('Could Not Verify Post Information.')
+        }
+
+    });
+}
+
 const createNewPostBtn = document.getElementById('create-new-post');
 
 createNewPostBtn.addEventListener('click', () => {  
     createPostForm();
     closeCreatePost();
     updateChractersRemaining();
+    postNewUserPost(currentUserId);
 });
