@@ -87,7 +87,7 @@ async function fetchPosts() {
 }
 
 window.onload = function() {
-    setTimeout(getUsername, 1500)
+    setTimeout(getUsername, 500)
     //getUsername();
 };
 
@@ -151,11 +151,18 @@ function likeButtonEvents() {
 
 // Create New Post
 
-const createNewPostForm = document.getElementById('create-new-post');
+function createPostForm() {
+    const maximumTitleCharacters = 50;
+    const maximumPostCharacters = 300;
+    const createNewPostSection = document.getElementById('create-new-post-section');
 
-function createPostForm(parent) {
+    const createPostWrapper = document.createElement('div')
+    createPostWrapper.className = 'create-post-wrapper';
+    createPostWrapper.id = 'create-post-wrapper-id';
+
     const createPostContainer = document.createElement('div');
     createPostContainer.className = 'create-post-container';
+    createPostContainer.id = 'create-post-container-id';
 
     const createPostHeader = document.createElement('div');
     createPostHeader.className = 'create-post-header';  
@@ -167,6 +174,7 @@ function createPostForm(parent) {
 
     const closePostCreation = document.createElement('span');
     closePostCreation.className = 'material-symbols-outlined';
+    closePostCreation.id = 'close-post';
     closePostCreation.innerText = 'close';
     createPostHeader.appendChild(closePostCreation);
 
@@ -176,18 +184,77 @@ function createPostForm(parent) {
     createPostTitleInput.type = 'text';
     createPostTitleInput.className = 'create-post-title';
     createPostTitleInput.id = 'create-post-title';
+    createPostTitleInput.maxLength = maximumTitleCharacters;
     createPostContainer.appendChild(createPostTitleInput);
 
-    const createPostInput = document.createElement('input');
+    const createPostInput = document.createElement('textarea');
     createPostInput.type = 'text';
     createPostInput.className = 'create-post-text';
     createPostInput.id = 'create-post-text';
+    createPostInput.rows = '5';
+    createPostInput.cols = '40';
+    createPostInput.maxLength = maximumPostCharacters;
     createPostContainer.appendChild(createPostInput);
+
+    const createPostFooter = document.createElement('div');
+    createPostFooter.className = 'create-post-footer';
+    createPostFooter.id = 'create-post-footer-id';
+    createPostContainer.appendChild(createPostFooter);
+
+    const currentChars = document.createElement('span');
+    currentChars.className = 'create-post-current-chars';
+    currentChars.id = 'create-post-current-chars-id';
+    currentChars.innerText = '0';
+
+    const createPostCharsRemainingContainer = document.createElement('div');
+    createPostCharsRemainingContainer.className = 'chars-remaining-container';
+    createPostCharsRemainingContainer.id = 'chars-remaining-container-id';
+    createPostCharsRemainingContainer.appendChild(currentChars);
+    createPostCharsRemainingContainer.innerHTML += ` / ${maximumPostCharacters}`;
+    createPostFooter.appendChild(createPostCharsRemainingContainer);
 
     const createPostButton = document.createElement('button');
     createPostButton.className = 'create-post-button';
     createPostButton.innerText = 'Post';
-    createPostContainer.appendChild(createPostButton);
+    createPostFooter.appendChild(createPostButton);
+    createPostContainer.appendChild(createPostFooter);
 
-    parent.appendChild(createPostContainer);
+    createNewPostSection.appendChild(createPostWrapper);
+    createNewPostSection.appendChild(createPostContainer);
+
 }
+
+function closeCreatePost() {
+    const closePost = document.getElementById('close-post');
+
+    closePost.addEventListener('click', () => {
+       const postCreationContainer = document.getElementById('create-new-post-section');
+       postCreationContainer.innerHTML = "";
+    });
+}
+
+function updateChractersRemaining() {
+    const textInput = document.getElementById('create-post-text')
+
+    textInput.addEventListener('input', () => {
+        const textInputLength = textInput.value.length;
+        const currentCharsElement = document.getElementById('create-post-current-chars-id');
+        currentCharsElement.innerText = textInputLength;
+
+        if (textInputLength > 200 && textInputLength < 300) {
+            currentCharsElement.style.color = "#ffa600";
+        } else if (textInputLength >= 300) {
+            currentCharsElement.style.color = "#ff6361";
+        } else {
+            currentCharsElement.style.color = "whitesmoke";
+        }
+    })
+}
+
+const createNewPostBtn = document.getElementById('create-new-post');
+
+createNewPostBtn.addEventListener('click', () => {  
+    createPostForm();
+    closeCreatePost();
+    updateChractersRemaining();
+});
