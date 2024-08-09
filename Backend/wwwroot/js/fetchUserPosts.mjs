@@ -161,7 +161,7 @@ function createPostForm() {
     createPostWrapper.id = 'create-post-wrapper-id';
 
     const createPostContainer = document.createElement('div');
-    createPostContainer.className = 'create-post-container';
+    createPostContainer.className = 'create-post-container roboto-regular';
     createPostContainer.id = 'create-post-container-id';
 
     const createPostHeader = document.createElement('div');
@@ -180,12 +180,24 @@ function createPostForm() {
 
     createPostContainer.appendChild(createPostHeader);
 
+    const createPostTitleLabel = document.createElement('label')
+    createPostTitleLabel.className = 'create-post-title-label create-post-input-label'
+    createPostTitleLabel.for = 'create-post-title';
+    createPostTitleLabel.innerText = 'Title: ';
+    createPostContainer.appendChild(createPostTitleLabel);
+
     const createPostTitleInput = document.createElement('input');
     createPostTitleInput.type = 'text';
     createPostTitleInput.className = 'create-post-title';
     createPostTitleInput.id = 'create-post-title';
     createPostTitleInput.maxLength = maximumTitleCharacters;
     createPostContainer.appendChild(createPostTitleInput);
+
+    const createPostInputLabel = document.createElement('label');
+    createPostInputLabel.className = 'create-post-input-label create-post-input-label';
+    createPostInputLabel.for = 'create-post-text';
+    createPostInputLabel.innerText = 'Post Content: ';
+    createPostContainer.appendChild(createPostInputLabel);
 
     const createPostInput = document.createElement('textarea');
     createPostInput.type = 'text';

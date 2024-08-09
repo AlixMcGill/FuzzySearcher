@@ -189,6 +189,7 @@
 
 .create-post-title, .create-post-text {
     margin: .5rem;
+    margin-top: .2rem;
     width: 20rem;
 }
 
@@ -197,4 +198,9 @@
     justify-content: space-between;
     width: 20rem;
     margin-top: 1rem;
+}
+
+.create-post-input-label {
+    margin-top: .5rem;
+    width: 20rem;
 }
