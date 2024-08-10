@@ -351,7 +351,7 @@ function filterPostByDate(direction) {
           
             return dateB - dateA;
           });
-          sortElementsBySortedArray(postTemporaryObjectArray)
+          sortElementsBySortedArray(postTemporaryObjectArray);
     }
     if (direction == false) { // Decending by date
         postTemporaryObjectArray.sort((a, b) => {
@@ -360,7 +360,41 @@ function filterPostByDate(direction) {
           
             return dateA - dateB;
           });
-          sortElementsBySortedArray(postTemporaryObjectArray)
+          sortElementsBySortedArray(postTemporaryObjectArray);
+    }
+}
+
+function filterPostByLikes(direction) {
+    const posts = document.querySelectorAll('.post');
+
+    postTemporaryObjectArray = []
+
+    posts.forEach(post => {
+        postTemporaryObjectArray.push(
+            {
+                postId: post.id,
+                postLikes: parseInt(post.querySelector('.post-likes-amount').innerText)
+            }
+        );
+    })
+
+    if (direction === true) { // Asecnding by likes
+        postTemporaryObjectArray.sort((a, b) => {
+            const likesA = a.postLikes;
+            const likesB = b.postLikes;
+          
+            return likesB - likesA;
+          });
+          sortElementsBySortedArray(postTemporaryObjectArray);
+    }
+    if (direction === false) { // Asecnding by likes
+        postTemporaryObjectArray.sort((a, b) => {
+            const likesA = a.postLikes;
+            const likesB = b.postLikes;
+          
+            return likesA - likesB;
+          });
+          sortElementsBySortedArray(postTemporaryObjectArray);
     }
 }
 
@@ -404,5 +438,15 @@ function dropdownContentEvents() {
         dropdownContent.forEach(element => {element.id = ''});
         dropdownContent[1].id = activeAttribute;
         filterPostByDate(false); // Asecnding by date
+    });
+    dropdownContent[2].addEventListener('click', () => {
+        dropdownContent.forEach(element => {element.id = ''});
+        dropdownContent[2].id = activeAttribute;
+        filterPostByLikes(true); // Asecnding by Likes
+    });
+    dropdownContent[3].addEventListener('click', () => {
+        dropdownContent.forEach(element => {element.id = ''});
+        dropdownContent[3].id = activeAttribute;
+        filterPostByLikes(false); // Asecnding by Likes
     });
 }
