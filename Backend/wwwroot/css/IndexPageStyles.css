@@ -286,3 +286,7 @@
   
 
 .dropdown:hover .dropbtn {background-color: #bc5090;} 
+
+#liked {
+    color: #ff6361;
+}

@@ -58,7 +58,7 @@ function createNewPost(parent, posts){
         parent.appendChild(post);
     }
     loader.innerText = '';
-    //likeButtonEvents();
+    likeButtonEvents();
     dropdownContentEvents();
 }
 
@@ -137,12 +137,47 @@ async function incrementLikes(postId) {
     }
 }
 
-function likeButtonEvents() { // Not Currently working
+async function decrementLikes(postId) {
+    url = `${hostAddress}/UserPosts/DecrementLikes/${postId}`
+
+    try {
+        const response = await fetch(url, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({})
+        });
+
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+
+function likeButtonEvents() {
     const posts = document.querySelectorAll('.post');
     posts.forEach(post => {
         const btn = post.querySelector('.post-likes');
-        btn.onClick = incrementLikes(post.id);
-        console.log(post.id);
+        btn.addEventListener('click', () => {
+            if (btn.classList.contains('liked')) {
+                decrementLikes(post.id);
+                const likesAmount = post.querySelector('.post-likes-amount');
+                let parsedBtn = parseInt(likesAmount.innerText);
+                parsedBtn--;
+                likesAmount.innerText = parsedBtn;
+                btn.id = '';
+            } else {
+                incrementLikes(post.id);
+                const likesAmount = post.querySelector('.post-likes-amount');
+                let parsedBtn = parseInt(likesAmount.innerText);
+                parsedBtn++;
+                likesAmount.innerText = parsedBtn;
+                btn.id = 'liked';
+            }
+        });
     });
 } 
 
