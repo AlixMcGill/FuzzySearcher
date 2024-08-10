@@ -162,7 +162,7 @@ function likeButtonEvents() {
     posts.forEach(post => {
         const btn = post.querySelector('.post-likes');
         btn.addEventListener('click', () => {
-            if (btn.classList.contains('liked')) {
+            if (btn.id === 'liked') {
                 decrementLikes(post.id);
                 const likesAmount = post.querySelector('.post-likes-amount');
                 let parsedBtn = parseInt(likesAmount.innerText);
