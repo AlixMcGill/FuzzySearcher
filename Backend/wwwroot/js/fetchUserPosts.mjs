@@ -34,6 +34,7 @@ function createNewPost(parent, posts){
 
         const postDate = document.createElement('span');
         postDate.className = 'post-date';
+        postDate.id = 'post-date-id';
         postDate.innerText = posts[i].date_Time.slice(0, -9);
         postFooter.appendChild(postDate);
 
@@ -60,6 +61,7 @@ function createNewPost(parent, posts){
     }
     loader.innerText = '';
     //likeButtonEvents();
+    dropdownContentEvents();
 }
 
 
@@ -136,8 +138,6 @@ async function incrementLikes(postId) {
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
         }
-
-        console.log(response);
     } catch (error) {
         console.error(error.message);
     }
@@ -327,3 +327,82 @@ createNewPostBtn.addEventListener('click', () => {
     updateChractersRemaining();
     postNewUserPost(currentUserId);
 });
+
+function filterPostByDate(direction) {
+    const posts = document.querySelectorAll('.post');
+
+    postTemporaryObjectArray = []
+
+    posts.forEach(post => {
+        postTemporaryObjectArray.push(
+            {
+                postId: post.id,
+                postYear: parseInt(post.querySelector('.post-date').innerText.slice(0, 4)),
+                postMonth: parseInt(post.querySelector('.post-date').innerText.slice(5,7)),
+                postDay: parseInt(post.querySelector('.post-date').innerText.slice(8, 10))
+            }
+        );
+    })
+
+    if (direction === true) { // Asecnding by date
+        postTemporaryObjectArray.sort((a, b) => {
+            const dateA = new Date(a.postYear, a.postMonth - 1, a.postDay);
+            const dateB = new Date(b.postYear, b.postMonth - 1, b.postDay);
+          
+            return dateB - dateA;
+          });
+          sortElementsBySortedArray(postTemporaryObjectArray)
+    }
+    if (direction == false) { // Decending by date
+        postTemporaryObjectArray.sort((a, b) => {
+            const dateA = new Date(a.postYear, a.postMonth - 1, a.postDay);
+            const dateB = new Date(b.postYear, b.postMonth - 1, b.postDay);
+          
+            return dateA - dateB;
+          });
+          sortElementsBySortedArray(postTemporaryObjectArray)
+    }
+}
+
+function sortElementsBySortedArray(sortedObjects) { 
+    const container = document.getElementById('post-ctrn'); 
+    const elements = Array.from(container.querySelectorAll('.post')); 
+
+    const elementMap = elements.reduce((acc, element) => { 
+      const id = parseInt(element.getAttribute('id'), 10); 
+      acc[id] = element; 
+      return acc; 
+    }, {}); 
+
+    const fragment = document.createDocumentFragment(); 
+
+    sortedObjects.forEach(id => { 
+      if (elementMap[id.postId]) { 
+        fragment.appendChild(elementMap[id.postId]);
+      } 
+    }); 
+    container.innerHTML = '';
+    container.appendChild(fragment);
+}
+
+function dropdownContentEvents() {
+    const container = document.getElementById('post-ctrn');
+    if (container.innerHTML === "" || container.innerHTML === null) {
+        alert("Please Reload The Page No Posts To Filter");
+        return;
+    }
+
+    const dropdownContent = document.querySelectorAll('.filter-button');
+    activeAttribute = 'active-dropdown-content'
+
+    dropdownContent[0].addEventListener('click', () => {
+        dropdownContent.forEach(element => {element.id = ''});
+        dropdownContent[0].id = activeAttribute;
+        filterPostByDate(true); // Asecnding by date
+    });
+    dropdownContent[1].addEventListener('click', () => {
+        dropdownContent.forEach(element => {element.id = ''});
+        dropdownContent[1].id = activeAttribute;
+        filterPostByDate(false); // Asecnding by date
+    });
+}
