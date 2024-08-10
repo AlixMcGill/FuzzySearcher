@@ -51,8 +51,6 @@ function createNewPost(parent, posts){
         likesAmount.innerText = posts[i].post_Likes;
         postLikesButton.appendChild(likesAmount);
 
-        //postLikesButton.onClick = incrementLikes(post.id);
-
         postFooter.appendChild(postLikesButton);
 
         post.appendChild(postFooter);
@@ -68,7 +66,7 @@ function createNewPost(parent, posts){
 async function fetchPosts() {
     const postContainer = document.getElementById('post-ctrn')
     postContainer.innerHTML = '';
-    const url = 'http://localhost:5273/UserPosts';
+    const url = `${hostAddress}/UserPosts`;
 
     try {
         const response = await fetch(url, {
@@ -82,23 +80,20 @@ async function fetchPosts() {
         if (!response.ok) {
           throw new Error(`Response status: ${response.status}`);
         }
-    
         const posts = await response.json();
-        createNewPost(postContainer, posts);
-        
+        createNewPost(postContainer, posts);       
     } catch (error) {
         console.error(error.message);
     }
 }
 
 window.onload = function() {
-    setTimeout(getUsername, 500)
-    //getUsername();
+    getUsername();
 };
 
 // Definitely not the best implementation
 async function getUsername() {
-    const url = `http://localhost:5273/DbSearch`;
+    const url = `${hostAddress}/DbSearch`;
 
     try {
         const response = await fetch(url, {
@@ -119,12 +114,11 @@ async function getUsername() {
     } catch (error) {
         console.error(error.message);
     }
-
     fetchPosts();
 }
 
 async function incrementLikes(postId) {
-    url = `http://localhost:5273/UserPosts/IncrementLikes/${postId}`
+    url = `${hostAddress}/UserPosts/IncrementLikes/${postId}`
 
     try {
         const response = await fetch(url, {
@@ -242,7 +236,6 @@ function createPostForm() {
 
 function closeCreatePost() {
     const closePost = document.getElementById('close-post');
-
     closePost.addEventListener('click', () => {
        const postCreationContainer = document.getElementById('create-new-post-section');
        postCreationContainer.innerHTML = "";
@@ -251,7 +244,7 @@ function closeCreatePost() {
 
 function forceCloseCreatePost() {
     const postCreationContainer = document.getElementById('create-new-post-section');
-       postCreationContainer.innerHTML = "";
+    postCreationContainer.innerHTML = "";
 }
 
 function updateChractersRemaining() {
@@ -315,7 +308,6 @@ function postNewUserPost(currentUserID) {
             forceCloseCreatePost()
             alert('Could Not Verify Post Information.')
         }
-
     });
 }
 
@@ -332,34 +324,26 @@ function filterPostByDate(direction) {
     const posts = document.querySelectorAll('.post');
 
     postTemporaryObjectArray = []
-
     posts.forEach(post => {
-        postTemporaryObjectArray.push(
-            {
+        postTemporaryObjectArray.push({
                 postId: post.id,
                 postYear: parseInt(post.querySelector('.post-date').innerText.slice(0, 4)),
                 postMonth: parseInt(post.querySelector('.post-date').innerText.slice(5,7)),
-                postDay: parseInt(post.querySelector('.post-date').innerText.slice(8, 10))
-            }
-        );
-    })
+                postDay: parseInt(post.querySelector('.post-date').innerText.slice(8, 10))});
+    });
 
     if (direction === true) { // Asecnding by date
         postTemporaryObjectArray.sort((a, b) => {
             const dateA = new Date(a.postYear, a.postMonth - 1, a.postDay);
-            const dateB = new Date(b.postYear, b.postMonth - 1, b.postDay);
-          
-            return dateB - dateA;
-          });
+            const dateB = new Date(b.postYear, b.postMonth - 1, b.postDay); 
+            return dateB - dateA;});
           sortElementsBySortedArray(postTemporaryObjectArray);
     }
     if (direction == false) { // Decending by date
         postTemporaryObjectArray.sort((a, b) => {
             const dateA = new Date(a.postYear, a.postMonth - 1, a.postDay);
             const dateB = new Date(b.postYear, b.postMonth - 1, b.postDay);
-          
-            return dateA - dateB;
-          });
+            return dateA - dateB;});
           sortElementsBySortedArray(postTemporaryObjectArray);
     }
 }
@@ -368,32 +352,24 @@ function filterPostByLikes(direction) {
     const posts = document.querySelectorAll('.post');
 
     postTemporaryObjectArray = []
-
     posts.forEach(post => {
-        postTemporaryObjectArray.push(
-            {
+        postTemporaryObjectArray.push({
                 postId: post.id,
-                postLikes: parseInt(post.querySelector('.post-likes-amount').innerText)
-            }
-        );
-    })
+                postLikes: parseInt(post.querySelector('.post-likes-amount').innerText)});
+    });
 
     if (direction === true) { // Asecnding by likes
         postTemporaryObjectArray.sort((a, b) => {
             const likesA = a.postLikes;
-            const likesB = b.postLikes;
-          
-            return likesB - likesA;
-          });
+            const likesB = b.postLikes;   
+            return likesB - likesA;});
           sortElementsBySortedArray(postTemporaryObjectArray);
     }
     if (direction === false) { // Asecnding by likes
         postTemporaryObjectArray.sort((a, b) => {
             const likesA = a.postLikes;
             const likesB = b.postLikes;
-          
-            return likesA - likesB;
-          });
+            return likesA - likesB;});
           sortElementsBySortedArray(postTemporaryObjectArray);
     }
 }
@@ -419,6 +395,11 @@ function sortElementsBySortedArray(sortedObjects) {
     container.appendChild(fragment);
 }
 
+function changeActiveAttribute(nodes, index) {
+    nodes.forEach(element => {element.id = ''});
+    nodes[index].id = activeAttribute;
+}
+
 function dropdownContentEvents() {
     const container = document.getElementById('post-ctrn');
     if (container.innerHTML === "" || container.innerHTML === null) {
@@ -430,23 +411,19 @@ function dropdownContentEvents() {
     activeAttribute = 'active-dropdown-content'
 
     dropdownContent[0].addEventListener('click', () => {
-        dropdownContent.forEach(element => {element.id = ''});
-        dropdownContent[0].id = activeAttribute;
+        changeActiveAttribute(dropdownContent, 0);
         filterPostByDate(true); // Asecnding by date
     });
     dropdownContent[1].addEventListener('click', () => {
-        dropdownContent.forEach(element => {element.id = ''});
-        dropdownContent[1].id = activeAttribute;
-        filterPostByDate(false); // Asecnding by date
+        changeActiveAttribute(dropdownContent, 1);
+        filterPostByDate(false); // decnding by date
     });
     dropdownContent[2].addEventListener('click', () => {
-        dropdownContent.forEach(element => {element.id = ''});
-        dropdownContent[2].id = activeAttribute;
+        changeActiveAttribute(dropdownContent, 2);
         filterPostByLikes(true); // Asecnding by Likes
     });
     dropdownContent[3].addEventListener('click', () => {
-        dropdownContent.forEach(element => {element.id = ''});
-        dropdownContent[3].id = activeAttribute;
-        filterPostByLikes(false); // Asecnding by Likes
+        changeActiveAttribute(dropdownContent, 3);
+        filterPostByLikes(false); // decnding by Likes
     });
 }
