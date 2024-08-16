@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "z0OXV8XKVHF83w1EcGqQEmtdEhauacU2NQhGI9YUxDE=",
+  "Hash": "wc/m938B4T5+S+nNpzMCILOC4VtL2vUIEqk0L3xdxGc=",
   "Source": "Backend",
   "BasePath": "_content/Backend",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "Backend\\wwwroot",
       "Source": "Backend",
-      "ContentRoot": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\",
       "BasePath": "_content/Backend",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\css\\CreateAcc.css",
+      "Identity": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\css\\CreateAcc.css",
       "SourceId": "Backend",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\",
       "BasePath": "_content/Backend",
       "RelativePath": "css/CreateAcc.css",
       "AssetKind": "All",
@@ -36,10 +36,10 @@
       "OriginalItemSpec": "wwwroot\\css\\CreateAcc.css"
     },
     {
-      "Identity": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\css\\IndexPageStyles.css",
+      "Identity": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\css\\IndexPageStyles.css",
       "SourceId": "Backend",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\",
       "BasePath": "_content/Backend",
       "RelativePath": "css/IndexPageStyles.css",
       "AssetKind": "All",
@@ -55,10 +55,10 @@
       "OriginalItemSpec": "wwwroot\\css\\IndexPageStyles.css"
     },
     {
-      "Identity": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\css\\Loader.css",
+      "Identity": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\css\\Loader.css",
       "SourceId": "Backend",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\",
       "BasePath": "_content/Backend",
       "RelativePath": "css/Loader.css",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Loader.css"
     },
     {
-      "Identity": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\css\\NavBar.css",
+      "Identity": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\css\\NavBar.css",
       "SourceId": "Backend",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\",
       "BasePath": "_content/Backend",
       "RelativePath": "css/NavBar.css",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\css\\NavBar.css"
     },
     {
-      "Identity": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\css\\Roboto.css",
+      "Identity": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\css\\Roboto.css",
       "SourceId": "Backend",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\",
       "BasePath": "_content/Backend",
       "RelativePath": "css/Roboto.css",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\css\\Roboto.css"
     },
     {
-      "Identity": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\css\\styles.css",
+      "Identity": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\css\\styles.css",
       "SourceId": "Backend",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\",
       "BasePath": "_content/Backend",
       "RelativePath": "css/styles.css",
       "AssetKind": "All",
@@ -131,10 +131,10 @@
       "OriginalItemSpec": "wwwroot\\css\\styles.css"
     },
     {
-      "Identity": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\index.html",
+      "Identity": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\index.html",
       "SourceId": "Backend",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\",
       "BasePath": "_content/Backend",
       "RelativePath": "index.html",
       "AssetKind": "All",
@@ -150,10 +150,10 @@
       "OriginalItemSpec": "wwwroot\\index.html"
     },
     {
-      "Identity": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\js\\events.mjs",
+      "Identity": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\js\\events.mjs",
       "SourceId": "Backend",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\",
       "BasePath": "_content/Backend",
       "RelativePath": "js/events.mjs",
       "AssetKind": "All",
@@ -169,10 +169,10 @@
       "OriginalItemSpec": "wwwroot\\js\\events.mjs"
     },
     {
-      "Identity": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\js\\fetch.mjs",
+      "Identity": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\js\\fetch.mjs",
       "SourceId": "Backend",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\",
       "BasePath": "_content/Backend",
       "RelativePath": "js/fetch.mjs",
       "AssetKind": "All",
@@ -188,10 +188,10 @@
       "OriginalItemSpec": "wwwroot\\js\\fetch.mjs"
     },
     {
-      "Identity": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\js\\fetchUserPosts.mjs",
+      "Identity": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\js\\fetchUserPosts.mjs",
       "SourceId": "Backend",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\",
       "BasePath": "_content/Backend",
       "RelativePath": "js/fetchUserPosts.mjs",
       "AssetKind": "All",
@@ -207,10 +207,10 @@
       "OriginalItemSpec": "wwwroot\\js\\fetchUserPosts.mjs"
     },
     {
-      "Identity": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\login.html",
+      "Identity": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\login.html",
       "SourceId": "Backend",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\",
       "BasePath": "_content/Backend",
       "RelativePath": "login.html",
       "AssetKind": "All",

@@ -20,7 +20,7 @@ public static class UserPosts
                 return Results.Ok(posts);
             else
                 return Results.NotFound();
-        });
+        }); 
 
         group.MapGet("/{id}", (int id, [FromServices] MySqlConnection connection) => {
             var posts = connection.Query<PostDto>("SELECT * FROM posts WHERE Id = @Id", new {Id = id});
