@@ -2,7 +2,7 @@ using Backend.Dto;
 using Dapper;
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace Backend.endpoints;
 
@@ -14,7 +14,9 @@ public static class UserPosts
 
         // GET REQUESTS
 
-        group.MapGet("/", ([FromServices] MySqlConnection connection) => {
+        group.MapGet("/", 
+            [Authorize]
+            ([FromServices] MySqlConnection connection) => {
             var posts = connection.Query<PostDto>("SELECT * FROM posts");
             if (posts != null)
                 return Results.Ok(posts);

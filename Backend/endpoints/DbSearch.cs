@@ -1,7 +1,11 @@
 using Backend.Dto;
 using Dapper;
+using System.Text;
+using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Backend.endpoints;
 
@@ -16,10 +20,13 @@ public static class DbSearch
         group.MapGet("/", ([FromServices] MySqlConnection connection) =>
         {
             var users = connection.Query<UserDtos>("SELECT * FROM user");
-            if (users != null)
+            if (users.Any()) {
+                Console.WriteLine(users);
                 return Results.Ok(users);
-            else
+            }
+            else {
                 return Results.NotFound();
+            }
 
         });
 
@@ -57,19 +64,36 @@ public static class DbSearch
             }
         });
 
-        group.MapPost("/Login", (UserDtos UserLogin, [FromServices] MySqlConnection connection) => {
-            if (UserLogin.UserName != null && UserLogin.Password != null || 
-                UserLogin.Password != "" && UserLogin.UserName != "" || 
-                UserLogin.UserName != null || UserLogin.Password != null || 
-                UserLogin.Password != "" || UserLogin.UserName != "") {
-                    var users = connection.Query<UserDtos>(@"
-                    SELECT Username, Password FROM user WHERE Username = @Username AND Password = @Password LIMIT 1;",
-                    new {Username = UserLogin.UserName,
-                         Password = UserLogin.Password});
+        group.MapPost("/Login", 
+            [AllowAnonymous]
+            (UserDtos UserLogin, [FromServices] MySqlConnection connection) => {
+            var users = connection.Query<UserDtos>(@"
+            SELECT Username, Password FROM user WHERE Username = @Username AND Password = @Password LIMIT 1;",
+            new {Username = UserLogin.UserName,
+                 Password = UserLogin.Password});
 
-                    return Results.Ok(users);
-            } else {
-                return Results.BadRequest();
+            var newUsers = users.ToArray();
+
+            if (newUsers.Length == 0) return Results.BadRequest();
+
+            if (newUsers[0].UserName == UserLogin.UserName &&
+                newUsers[0].Password == UserLogin.Password) {
+              var issuer = app.Configuration["Jwt:Issuer"];
+              var audience = app.Configuration["Jwt:Audience"];
+              var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(app.Configuration["Jwt:Key"]));
+              var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+              
+              var token = new JwtSecurityToken(
+                  issuer: issuer, 
+                  audience: audience, 
+                  signingCredentials: credentials);
+
+              var tokenHandler = new JwtSecurityTokenHandler();
+              var stringToken = tokenHandler.WriteToken(token);
+              return Results.Ok(stringToken);
+            }
+            else {
+              return Results.BadRequest();
             }
         });
 

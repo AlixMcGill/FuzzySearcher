@@ -29,16 +29,12 @@
       "PackagePath": "staticwebassets\\index.html"
     },
     {
-      "Id": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\js\\events.mjs",
-      "PackagePath": "staticwebassets\\js\\events.mjs"
-    },
-    {
-      "Id": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\js\\fetch.mjs",
-      "PackagePath": "staticwebassets\\js\\fetch.mjs"
-    },
-    {
       "Id": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\js\\fetchUserPosts.mjs",
       "PackagePath": "staticwebassets\\js\\fetchUserPosts.mjs"
+    },
+    {
+      "Id": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\js\\logincred.mjs",
+      "PackagePath": "staticwebassets\\js\\logincred.mjs"
     },
     {
       "Id": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\login.html",
