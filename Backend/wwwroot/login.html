@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/Roboto.css">
     <link rel="stylesheet" href="./css/NavBar.css">
@@ -21,6 +22,7 @@
     </nav>
 </header>
 <body>
+    <section id="new-account-container"></section>
     <section id="create-acc-section">
         <form class="roboto-regular text-color">
             <label for="username">Username:</label>
@@ -33,9 +35,10 @@
         </form>
         <div class="create-account roboto-regular text-color">
             <p>No Account?</p>
-            <button>Create account here</button>
+            <button id="create-acc-button">Create account here</button>
         </div>
     </section>
     <script type="module"  src="./js/logincred.mjs"></script>
+    <script src="./js/createAccount.js"></script>
 </body>
 </html>

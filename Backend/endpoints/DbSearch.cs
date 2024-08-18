@@ -39,25 +39,32 @@ public static class DbSearch
                 return Results.NotFound();
         });
 
-        group.MapGet("/filter={filter}", (string filter, [FromServices] MySqlConnection connection) =>
+        group.MapGet("/filter={filter}", 
+                [AllowAnonymous]
+                (string filter, [FromServices] MySqlConnection connection) =>
         {
-            var filteredUsers = connection.Query<UserDtos>($"SELECT * FROM user WHERE `FirstName` LIKE '%{filter}%'");
-            if (filteredUsers.Any())
+            var filteredUsers = connection.Query<UserDtos>($"SELECT Username FROM user WHERE `Username` LIKE '%{filter}%'");
+            if (filteredUsers.ToArray()[0].UserName == filter)
                 return Results.Ok(filteredUsers);
             else
-                return Results.NotFound();
+                return Results.Accepted();
         });
 
         // POST REQUESTS
 
-        group.MapPost("/", async (UserDtos newUser, [FromServices] MySqlConnection connection) =>
+        group.MapPost("/", 
+            [AllowAnonymous] 
+            async (UserDtos newUser, [FromServices] MySqlConnection connection) =>
         {
-            if(newUser.FirstName != "" || newUser.FirstName != null) {
+            if(newUser.FirstName != "" || newUser.FirstName != null ||
+               newUser.LastName != "" || newUser.LastName != null ||
+               newUser.UserName != "" || newUser.UserName != null ||
+               newUser.Password != "" || newUser.Password != null) {
                 await connection.ExecuteAsync(@"
                     INSERT INTO user (FirstName, LastName, Username, Password)
                         VALUES (@FirstName, @LastName, @Username, @Password);", newUser);
 
-                return Results.Ok(newUser);
+                return Results.Ok();
             }
             else {
                 return Results.BadRequest();

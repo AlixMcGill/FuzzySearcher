@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2rKVjP+fA8z7E1NAfs8tUT2EXu3TU/4sls7MTovPe5g=",
+  "Hash": "qoPGaVQkupoULk2vj1eKuk7XoMLgXLeBjsjt+vodh+o=",
   "Source": "Backend",
   "BasePath": "_content/Backend",
   "Mode": "Default",
@@ -148,6 +148,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\js\\createAccount.js",
+      "SourceId": "Backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\",
+      "BasePath": "_content/Backend",
+      "RelativePath": "js/createAccount.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\createAccount.js"
     },
     {
       "Identity": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\js\\fetchUserPosts.mjs",

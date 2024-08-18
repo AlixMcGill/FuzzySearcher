@@ -29,6 +29,10 @@
       "PackagePath": "staticwebassets\\index.html"
     },
     {
+      "Id": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\js\\createAccount.js",
+      "PackagePath": "staticwebassets\\js\\createAccount.js"
+    },
+    {
       "Id": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\js\\fetchUserPosts.mjs",
       "PackagePath": "staticwebassets\\js\\fetchUserPosts.mjs"
     },

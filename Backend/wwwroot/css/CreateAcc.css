@@ -14,3 +14,28 @@
     gap: .3rem;
     width: 10%;
 }
+
+#new-account-wrapper {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 92.5%;
+    margin-bottom: 50%;
+    background-color: #003f5c;
+}
+
+.new-account-header-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+    margin-bottom: 2rem;
+}
+
+#close-new-account-creation:hover {
+    cursor: pointer;
+    color: #ff6361;
+}
