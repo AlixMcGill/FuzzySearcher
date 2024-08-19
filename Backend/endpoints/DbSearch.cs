@@ -17,7 +17,9 @@ public static class DbSearch
 
         // GET REQUESTS
 
-        group.MapGet("/", ([FromServices] MySqlConnection connection) =>
+        group.MapGet("/", 
+                [Authorize]
+                ([FromServices] MySqlConnection connection) =>
         {
             var users = connection.Query<UserDtos>("SELECT * FROM user");
             if (users.Any()) {
@@ -29,7 +31,9 @@ public static class DbSearch
 
         });
 
-        group.MapGet("/{id}", (int id, [FromServices] MySqlConnection connection) =>
+        group.MapGet("/{id}", 
+                [Authorize]
+                (int id, [FromServices] MySqlConnection connection) =>
         {
             var users = connection.Query<UserDtos>($"SELECT * FROM user WHERE Id = @Id", new { Id = id });
             if (users.Any())
@@ -37,6 +41,18 @@ public static class DbSearch
             else
                 return Results.NotFound();
         });
+
+        group.MapGet("/userInformation/{id}",
+                [Authorize]
+                async (int id, [FromServices] MySqlConnection connection) => {
+                    var userInformation = await connection.QueryAsync<UserDtos>(
+                            $"SELECT Id, FirstName, LastName, Username FROM user WHERE Id = @Id", new {Id = id});
+                    if (userInformation.ToArray()[0].Id == id) {
+                        return Results.Ok(userInformation);
+                    } else {
+                        return Results.NotFound();
+                    }
+                });
 
         group.MapGet("/filterbyusername={filter}",
                 [Authorize]

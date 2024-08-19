@@ -1,6 +1,7 @@
+const hostAddress = 'http://localhost:5273';
+checkAlreadyLoggedInAndReroute(getCookie('userJwt', 1), '/index.html');
 const username = document.getElementById("username-form");
 const password = document.getElementById("password-form");
-
 const submitBtn = document.getElementById("submit-login");
 
 submitBtn.addEventListener('click', () => {
@@ -15,10 +16,20 @@ function setCookie(cookieName, cookieValue, extraDays) {
     document.cookie = `${cookieName}=${cookieValue};${expires};SameSite=None; Secure`;
 }
 
+function getCookie(cookieName, index) {
+    return document.cookie.split('; ').find((row) => row.startsWith(`${cookieName}=`))?.split("=")[index]
+}
+
+function checkAlreadyLoggedInAndReroute(cookie, route) {
+    if (cookie) {
+        window.location = `${hostAddress}${route}`;
+    }
+}
+
 async function sendLogin(loginUsername, loginPassword) {
     let username = loginUsername.value;
     let password = loginPassword.value;
-    let url = "http://localhost:5273/DbSearch/Login";
+    let url = `${hostAddress}/DbSearch/Login`;
 
     try {
         const response = await fetch(url,{
@@ -39,6 +50,7 @@ async function sendLogin(loginUsername, loginPassword) {
         const jwt = await response.json();
         setCookie("userJwt", jwt, 15);
         setCookie("username", username, 15);
+        checkAlreadyLoggedInAndReroute(getCookie('userJwt', 1), '/profile.html')
 
     } catch (error) {
         console.error(error.message);

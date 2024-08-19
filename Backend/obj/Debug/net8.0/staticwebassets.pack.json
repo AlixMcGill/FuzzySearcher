@@ -41,8 +41,16 @@
       "PackagePath": "staticwebassets\\js\\logincred.mjs"
     },
     {
+      "Id": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\js\\profile.js",
+      "PackagePath": "staticwebassets\\js\\profile.js"
+    },
+    {
       "Id": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\login.html",
       "PackagePath": "staticwebassets\\login.html"
+    },
+    {
+      "Id": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\profile.html",
+      "PackagePath": "staticwebassets\\profile.html"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Backend.Microsoft.AspNetCore.StaticWebAssets.props",

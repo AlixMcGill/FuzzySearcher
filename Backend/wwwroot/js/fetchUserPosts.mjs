@@ -1,5 +1,6 @@
 let usersArray;
 const hostAddress = 'http://localhost:5273';
+checkAlreadyLoggedInAndReroute(getCookie('userJwt', 1), '/login.html');
 const loader = document.getElementById('loader-ctrn');
 getUsernameId(getCookie('username', 1));
 let loggedInUser = {
@@ -9,6 +10,12 @@ let loggedInUser = {
 
 function getCookie(cookieName, index) {
     return document.cookie.split('; ').find((row) => row.startsWith(`${cookieName}=`))?.split("=")[index]
+}
+
+function checkAlreadyLoggedInAndReroute(cookie, route) {
+    if (!cookie) {
+        window.location = `${hostAddress}${route}`;
+    }
 }
 
 function createNewPost(parent, posts){
@@ -105,12 +112,14 @@ window.onload = function() {
 // Definitely not the best implementation
 async function getUsername() {
     const url = `${hostAddress}/DbSearch`;
+    const jwtValue = getCookie('userJwt', 1);
+    const bearer = 'Bearer ' + jwtValue;
 
     try {
         const response = await fetch(url, {
-            mode: "no-cors",
             method: "GET",
             headers: {
+                Authorization: bearer,
                 "Content-Type": "application/json"
             },
         });

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "qoPGaVQkupoULk2vj1eKuk7XoMLgXLeBjsjt+vodh+o=",
+  "Hash": "WjWIqNWnpDQwT+GGaYDWAQC0CP4/5QICaMRzANEcjCc=",
   "Source": "Backend",
   "BasePath": "_content/Backend",
   "Mode": "Default",
@@ -207,6 +207,25 @@
       "OriginalItemSpec": "wwwroot\\js\\logincred.mjs"
     },
     {
+      "Identity": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\js\\profile.js",
+      "SourceId": "Backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\",
+      "BasePath": "_content/Backend",
+      "RelativePath": "js/profile.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\profile.js"
+    },
+    {
       "Identity": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\login.html",
       "SourceId": "Backend",
       "SourceType": "Discovered",
@@ -224,6 +243,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\login.html"
+    },
+    {
+      "Identity": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\profile.html",
+      "SourceId": "Backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\",
+      "BasePath": "_content/Backend",
+      "RelativePath": "profile.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\profile.html"
     }
   ]
 }
