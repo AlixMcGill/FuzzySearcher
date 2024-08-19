@@ -21,7 +21,6 @@ public static class DbSearch
         {
             var users = connection.Query<UserDtos>("SELECT * FROM user");
             if (users.Any()) {
-                Console.WriteLine(users);
                 return Results.Ok(users);
             }
             else {
@@ -38,6 +37,18 @@ public static class DbSearch
             else
                 return Results.NotFound();
         });
+
+        group.MapGet("/filterbyusername={filter}",
+                [Authorize]
+                async (string filter, [FromServices] MySqlConnection connection) => {
+                    var filteredUsers = await connection.QueryAsync<UserDtos>(
+                            $"SELECT Id, Username FROM user WHERE Username LIKE '%{filter}%'"); 
+                    if (filteredUsers.ToArray()[0].UserName == filter) {
+                        return Results.Ok(filteredUsers);
+                    } else {
+                        return Results.NotFound();
+                    }
+                });
 
         group.MapGet("/filter={filter}", 
                 [AllowAnonymous]
@@ -92,7 +103,7 @@ public static class DbSearch
               
               var token = new JwtSecurityToken(
                   issuer: issuer, 
-                  audience: audience, 
+                  audience: audience,
                   signingCredentials: credentials);
 
               var tokenHandler = new JwtSecurityTokenHandler();

@@ -1,7 +1,12 @@
 let usersArray;
-let currentUserId = 13; // Will implement properly late DELETE WHEN LOGIN COMPLETE!!!!
+let UserId; // Will implement properly late DELETE WHEN LOGIN COMPLETE!!!!
 const hostAddress = 'http://localhost:5273';
 const loader = document.getElementById('loader-ctrn');
+getUsernameId(getCookie('username', 1));
+
+function getCookie(cookieName, index) {
+    return document.cookie.split('; ').find((row) => row.startsWith(`${cookieName}=`))?.split("=")[index]
+}
 
 function createNewPost(parent, posts){
     for (let i = 0; i < posts.length; i++) {
@@ -67,14 +72,17 @@ async function fetchPosts() {
     const postContainer = document.getElementById('post-ctrn')
     postContainer.innerHTML = '';
     const url = `${hostAddress}/UserPosts`;
+    const jwtValue = getCookie('userJwt', 1);
+    const bearer = 'Bearer ' + jwtValue;
 
     try {
         const response = await fetch(url, {
-            mode: "no-cors",
             method: "GET",
             headers: {
-                "Content-Type": "application/json"
+                Authorization: bearer,
+                "Content-Type": "application/json",
             },
+            cache: "force-cache"
         });
 
         if (!response.ok) {
@@ -312,12 +320,15 @@ function postNewUserPost(currentUserID) {
         const titleValue = title.value;
         const contentValue = content.value;
         const url = `${hostAddress}/UserPosts`;
+        const jwtValue = getCookie('userJwt', 1);
+        const bearer = 'Bearer ' + jwtValue;
 
         if (!isInputEmpty(title) && !isInputEmpty(content)) {
             try {
                 const response = await fetch(url, {
                     method: "POST",
                     headers: {
+                        Authorization: bearer,
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
@@ -346,13 +357,39 @@ function postNewUserPost(currentUserID) {
     });
 }
 
+async function getUsernameId(usernameCookie) {
+    const url = `${hostAddress}/DbSearch/filterbyusername=${usernameCookie}`;
+    const jwtValue = getCookie('userJwt', 1);
+    const bearer = 'Bearer ' + jwtValue;
+
+    try {
+       const response = await fetch(url,{
+           method: "GET",
+           headers: {
+               Authorization: bearer,
+               "Content-Type": "application/json"
+           }
+       });
+    if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+    }
+
+    if (response.ok) {
+        const res = await response.json();
+        UserId = res[0].id
+    }
+    } catch (error) {
+        
+    }
+}
+
 const createNewPostBtn = document.getElementById('create-new-post');
 
 createNewPostBtn.addEventListener('click', () => {  
     createPostForm();
     closeCreatePost();
     updateChractersRemaining();
-    postNewUserPost(currentUserId);
+    postNewUserPost(UserId);
 });
 
 function filterPostByDate(direction) {

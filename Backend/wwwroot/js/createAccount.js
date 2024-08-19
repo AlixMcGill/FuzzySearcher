@@ -83,7 +83,7 @@ async function checkExsitingUsername(username) {
         const response = await fetch(url, {
            method: "GET"
         });
-
+        
         if (response.ok) {
             window.alert('Username already exists');
             return false;
@@ -96,14 +96,13 @@ async function checkExsitingUsername(username) {
 }
 
 async function postNewAccount() {
-    const newAccountContainer = document.getElementById('new-acccount-container');
     const firstName = document.getElementById('create-account-first-name-id').value;
     const lastName = document.getElementById('create-account-last-name-id').value;
     const username = document.getElementById('create-account-username-id').value;
     const passwordOne = document.getElementById('create-account-password-id').value;
     const passwordTwo = document.getElementById('create-account-password-reenter-id').value;
     const url = `${hostAddress}/DbSearch`
-    if (checkMatchingPasswords(passwordOne, passwordTwo) && checkExsitingUsername(username)) {
+    if (checkMatchingPasswords(passwordOne, passwordTwo) && await checkExsitingUsername(username)) {
         try { 
             const response = await fetch(url, {
                 method: "POST",
@@ -118,7 +117,6 @@ async function postNewAccount() {
                 })
             });
             if (response.ok) {
-                newAccountContainer.innerHTML = "";
                 window.alert('Account Created Please Login');
             }
             if (!response.ok) {

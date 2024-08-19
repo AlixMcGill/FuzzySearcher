@@ -34,7 +34,9 @@ public static class UserPosts
 
         //POST Reqests
 
-        group.MapPost("/", async (PostDto NewPost, [FromServices] MySqlConnection connection) =>
+        group.MapPost("/", 
+                [Authorize] 
+                async (PostDto NewPost, [FromServices] MySqlConnection connection) =>
         {
             if(NewPost.Post_Body != "" || NewPost != null) {
                 await connection.ExecuteAsync(@"
