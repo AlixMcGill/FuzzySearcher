@@ -46,6 +46,11 @@ app.UseStaticFiles();
 
 app.UseHttpsRedirection();
 
+app.MapGet("/", () => 
+{
+    return Results.Redirect("/login.html");
+});
+
 app.DbSearchRoute();
 app.UserPostsRoute();
 
