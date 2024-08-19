@@ -1,8 +1,11 @@
 let usersArray;
-let UserId; // Will implement properly late DELETE WHEN LOGIN COMPLETE!!!!
 const hostAddress = 'http://localhost:5273';
 const loader = document.getElementById('loader-ctrn');
 getUsernameId(getCookie('username', 1));
+let loggedInUser = {
+    id: '',
+    username: getCookie('username', 1)
+};
 
 function getCookie(cookieName, index) {
     return document.cookie.split('; ').find((row) => row.startsWith(`${cookieName}=`))?.split("=")[index]
@@ -376,7 +379,8 @@ async function getUsernameId(usernameCookie) {
 
     if (response.ok) {
         const res = await response.json();
-        UserId = res[0].id
+        loggedInUser.id = res[0].id
+        profilePageNavigation()
     }
     } catch (error) {
         
@@ -389,7 +393,7 @@ createNewPostBtn.addEventListener('click', () => {
     createPostForm();
     closeCreatePost();
     updateChractersRemaining();
-    postNewUserPost(UserId);
+    postNewUserPost(loggedInUser.id);
 });
 
 function filterPostByDate(direction) {
@@ -498,4 +502,28 @@ function dropdownContentEvents() {
         changeActiveAttribute(dropdownContent, 3);
         filterPostByLikes(false); // decnding by Likes
     });
+}
+
+function cleanInnerHtml(tagToClean) {
+    tagToClean.innerHTML = "";
+}
+
+function createNavList(parent) {
+    const listElement = document.createElement('li');
+    const anchorElement = document.createElement('a');
+
+    listElement.classList = 'nav-list-item roboto-regular';
+    anchorElement.href = './profile.html';
+    anchorElement.innerText = 'Profile';
+
+    listElement.appendChild(anchorElement);
+    parent.appendChild(listElement);
+}
+
+function profilePageNavigation() {
+    if (loggedInUser.id !== '') {
+        const navList = document.getElementById('nav-ul-list')
+        cleanInnerHtml(navList);
+        createNavList(navList);
+    }
 }
