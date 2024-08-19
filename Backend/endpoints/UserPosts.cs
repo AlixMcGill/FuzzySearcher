@@ -25,6 +25,18 @@ public static class UserPosts
                     return Results.NotFound();
             });
 
+        group.MapGet("/Posts/{id}",
+                [Authorize]
+                async (int id, [FromServices] MySqlConnection connection) => 
+        {
+           var posts = await connection.QueryAsync<PostDto>("SELECT * FROM posts WHERE user_id = @Id", new {Id = id});
+           if (posts.ToArray().Any()) {
+                return Results.Ok(posts);
+           } else {
+                return Results.NotFound();
+           }
+        });
+
         group.MapGet("/{id}", (int id, [FromServices] MySqlConnection connection) =>
         {
             var posts = connection.Query<PostDto>("SELECT * FROM posts WHERE Id = @Id", new { Id = id });
