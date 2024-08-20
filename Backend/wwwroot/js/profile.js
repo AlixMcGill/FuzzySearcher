@@ -159,8 +159,19 @@ async function fetchPosts(userId) {
           throw new Error(`Response status: ${response.status}`);
         }
         const posts = await response.json();
-        createNewPost(postContainer, posts);       
+        createNewPost(postContainer, posts);
+        updateTotalProfileLikes()
     } catch (error) {
         console.error(error.message);
     }
+}
+
+function updateTotalProfileLikes() {
+    let totalLikes = 0;
+    const totalLikesElement = document.getElementById('total-profile-likes-item');
+    const postLikes = document.querySelectorAll('.post-likes-amount');
+    postLikes.forEach(post => {
+        totalLikes += parseInt(post.textContent);
+    });
+    totalLikesElement.innerText = totalLikes;
 }

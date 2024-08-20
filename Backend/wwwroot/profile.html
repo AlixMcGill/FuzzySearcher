@@ -25,15 +25,26 @@
 </header>
 <body>
     <section id="user-profile-section" class="roboto-regular text-color">
-        <p id="user-username">
-            @<span id="user-username-span"></span>
-        </p>
-        <div id="first-last-name-container">
-            <p id="first-last-name-p">
-                Name: 
-                <span id="user-first-name-span"></span> 
-                <span id="user-last-name-span"></span>
-            </p>
+        <div id="user-profile-info-wrapper">
+            <div id="profile-icon-container">
+                <span id="profile-icon" class="material-symbols-outlined">person</span>
+            </div>
+            <div id="profile-information-container"> 
+                <p id="user-username">
+                    @<span id="user-username-span"></span>
+                </p>
+                <div id="first-last-name-container">
+                    <p id="first-last-name-p">
+                    Name: 
+                    <span id="user-first-name-span"></span>, 
+                    <span id="user-last-name-span"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div id="total-profile-likes-wrapper">
+            <span class="material-symbols-outlined">favorite</span>
+            <span id="total-profile-likes-item">0</span>
         </div>
     </section>
     <section id="user-posts-section" class="roboto-regular"></section>

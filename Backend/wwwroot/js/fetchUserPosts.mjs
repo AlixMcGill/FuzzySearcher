@@ -631,3 +631,10 @@ const searchButton = document.getElementById("search-post-button");
 searchButton.addEventListener("click", async () => {
     await getNewUsernames();
 });
+
+const searchPostTextInput = document.getElementById('search-post-text-input');
+searchPostTextInput.addEventListener('keydown', (key) => {
+    if (key.key === "Enter") {
+        key.preventDefault();
+    }
+});

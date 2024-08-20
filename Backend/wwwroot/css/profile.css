@@ -1,0 +1,46 @@
+#user-profile-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2.5rem 20% 2rem;
+    background: linear-gradient(180deg, rgba(0,63,92,0.302592540922619) 24%, rgba(0,20,29,1) 100%);
+}
+
+#user-profile-info-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#profile-icon-container {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(44, 72, 117, .8);
+    box-shadow: inset 0px 0px 8px 2px rgba(0,0,0,0.3);
+    border-radius: 2rem;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+}
+
+#profile-icon {
+    margin-top: 2px;
+    font-size: 68px;
+    color: whitesmoke;
+    opacity: 80%;
+}
+
+#user-username {
+    font-weight: 500;
+    font-style: oblique;
+}
+
+#first-last-name-container {
+    margin-top: .2rem;
+}
+
+#total-profile-likes-wrapper {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
