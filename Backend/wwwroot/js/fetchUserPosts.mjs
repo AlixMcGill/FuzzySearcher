@@ -18,6 +18,12 @@ function checkAlreadyLoggedInAndReroute(cookie, route) {
     }
 }
 
+function resetLoader() {
+    const loaderDiv = document.createElement('div');
+    loaderDiv.classList = 'loader';
+    loader.appendChild(loaderDiv);
+}
+
 function createNewPost(parent, posts){
     for (let i = 0; i < posts.length; i++) {
         const post = document.createElement('div');
@@ -92,7 +98,6 @@ async function fetchPosts() {
                 Authorization: bearer,
                 "Content-Type": "application/json",
             },
-            cache: "force-cache"
         });
 
         if (!response.ok) {
@@ -531,8 +536,74 @@ function createNavList(parent) {
 
 function profilePageNavigation() {
     if (loggedInUser.id !== '') {
-        const navList = document.getElementById('nav-ul-list')
+        const navList = document.getElementById('nav-ul-list');
         cleanInnerHtml(navList);
         createNavList(navList);
     }
 }
+
+async function searchPostsByTitle() {
+    const postContainer = document.getElementById('post-ctrn');
+    const searchValue = document.getElementById('search-post-text-input').value;
+    postContainer.innerHTML = '';
+    resetLoader();
+    const url = `${hostAddress}/UserPosts/filter=${searchValue}`;
+    const jwtValue = getCookie('userJwt', 1);
+    const bearer = 'Bearer ' + jwtValue;
+
+    try {
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                Authorization: bearer,
+                "Content-Type": "application/json",
+            },
+        });
+
+        if (!response.ok) {
+          alert("Could not find a search result")
+          location.reload();
+          throw new Error(`Response status: ${response.status}`);
+        }
+        if (response.ok){
+            const posts = await response.json();
+            createNewPost(postContainer, posts);       
+        }
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+
+async function getNewUsernames() {
+    usersArray = "";
+    const url = `${hostAddress}/DbSearch`;
+    const jwtValue = getCookie('userJwt', 1);
+    const bearer = 'Bearer ' + jwtValue;
+
+    try {
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                Authorization: bearer,
+                "Content-Type": "application/json"
+            },
+        });
+
+        if (!response.ok) {
+          throw new Error(`Response status: ${response.status}`);
+        }
+    
+        const usernames = await response.json();
+        usersArray = usernames;
+        searchPostsByTitle();
+        
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+  
+const searchButton = document.getElementById('search-post-button');
+searchButton.addEventListener('click', async () => {
+await getNewUsernames();
+});
+

@@ -50,7 +50,7 @@ async function sendLogin(loginUsername, loginPassword) {
         const jwt = await response.json();
         setCookie("userJwt", jwt, 15);
         setCookie("username", username, 15);
-        checkAlreadyLoggedInAndReroute(getCookie('userJwt', 1), '/profile.html')
+        checkAlreadyLoggedInAndReroute(getCookie('userJwt', 1), '/index.html')
 
     } catch (error) {
         console.error(error.message);

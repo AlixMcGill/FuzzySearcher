@@ -41,7 +41,7 @@
 
 /* Post styling */
 
-.post-container {
+.post-container, #user-posts-section {
     position: relative;
     display: flex;
     flex-direction: column;

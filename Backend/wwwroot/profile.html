@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./css/NavBar.css">
     <link rel="stylesheet" href="./css/IndexPageStyles.css">
     <link rel="stylesheet" href="./css/Loader.css">
+    <link rel="stylesheet" href="./css/profile.css">
 </head>
 <header>
     <h1 class="roboto-bold">Fuzzy Searcher</h1>
@@ -24,15 +25,16 @@
 </header>
 <body>
     <section id="user-profile-section" class="roboto-regular text-color">
-        <p id="user-first-name">
-            First Name: <span id="user-first-name-span"></span>
-        </p>
-        <p id="user-last-name">
-            Last Name: <span id="user-last-name-span"></span>
-        </p>
         <p id="user-username">
-            Username: <span id="user-username-span"></span>
+            @<span id="user-username-span"></span>
         </p>
+        <div id="first-last-name-container">
+            <p id="first-last-name-p">
+                Name: 
+                <span id="user-first-name-span"></span> 
+                <span id="user-last-name-span"></span>
+            </p>
+        </div>
     </section>
     <section id="user-posts-section" class="roboto-regular"></section>
     <div id="loader-ctrn" class="loader-container">
