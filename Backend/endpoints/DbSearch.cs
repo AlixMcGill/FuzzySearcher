@@ -19,9 +19,9 @@ public static class DbSearch
 
         group.MapGet("/", 
                 [Authorize]
-                ([FromServices] MySqlConnection connection) =>
+                async ([FromServices] MySqlConnection connection) =>
         {
-            var users = connection.Query<UserDtos>("SELECT * FROM user");
+            var users = await connection.QueryAsync<UserDtos>("SELECT * FROM user");
             if (users.Any()) {
                 return Results.Ok(users);
             }
@@ -31,16 +31,16 @@ public static class DbSearch
 
         });
 
-        group.MapGet("/{id}", 
-                [Authorize]
-                (int id, [FromServices] MySqlConnection connection) =>
-        {
-            var users = connection.Query<UserDtos>($"SELECT * FROM user WHERE Id = @Id", new { Id = id });
-            if (users.Any())
-                return Results.Ok(users);
-            else
-                return Results.NotFound();
-        });
+        //group.MapGet("/{id}",// NOT USED 
+        //        [Authorize]
+        //        (int id, [FromServices] MySqlConnection connection) =>
+        //{
+        //    var users = connection.Query<UserDtos>($"SELECT * FROM user WHERE Id = @Id", new { Id = id });
+        //    if (users.Any())
+        //        return Results.Ok(users);
+        //    else
+        //        return Results.NotFound();
+        //});
 
         group.MapGet("/userInformation/{id}",
                 [Authorize]
@@ -68,9 +68,9 @@ public static class DbSearch
 
         group.MapGet("/filter={filter}", 
                 [AllowAnonymous]
-                (string filter, [FromServices] MySqlConnection connection) =>
+                async (string filter, [FromServices] MySqlConnection connection) =>
         {
-            var filteredUsers = connection.Query<UserDtos>($"SELECT Username FROM user WHERE `Username` LIKE '%{filter}%'");
+            var filteredUsers = await connection.QueryAsync<UserDtos>($"SELECT Username FROM user WHERE `Username` LIKE '%{filter}%'");
             if (filteredUsers.ToArray()[0].UserName == filter)
                 return Results.Ok(filteredUsers);
             else
@@ -100,8 +100,8 @@ public static class DbSearch
 
         group.MapPost("/Login", 
             [AllowAnonymous]
-            (UserDtos UserLogin, [FromServices] MySqlConnection connection) => {
-            var users = connection.Query<UserDtos>(@"
+            async (UserDtos UserLogin, [FromServices] MySqlConnection connection) => {
+            var users = await connection.QueryAsync<UserDtos>(@"
             SELECT Username, Password FROM user WHERE Username = @Username AND Password = @Password LIMIT 1;",
             new {Username = UserLogin.UserName,
                  Password = UserLogin.Password});
@@ -132,8 +132,8 @@ public static class DbSearch
         });
 
         // PUT REQUESTS
-
-        group.MapPut("/{Id}", async (int Id, UserDtos updateUsers, [FromServices] MySqlConnection connection) => {
+        // NOT USED
+        /*group.MapPut("/{Id}", async (int Id, UserDtos updateUsers, [FromServices] MySqlConnection connection) => {
             await connection.ExecuteAsync(@"
             UPDATE user SET 
                 `FirstName` = @FirstName, 
@@ -151,12 +151,12 @@ public static class DbSearch
         });
 
         // DELETE REQUESTS
-
+        // NOT USED
         group.MapDelete("/{Id}", async (int Id, [FromServices] MySqlConnection connection) => {
             await connection.ExecuteAsync("DELETE FROM user WHERE Id = @Id", new { Id = Id });
 
             return Results.Ok();
-        });
+        });*/
 
         return group;
     }
