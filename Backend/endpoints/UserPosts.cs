@@ -49,17 +49,6 @@ public static class UserPosts
                 return Results.NotFound();
             }
         });
-        
-        // NOT USED
-
-        //group.MapGet("/{id}", (int id, [FromServices] MySqlConnection connection) =>
-        //{
-        //   var posts = connection.Query<PostDto>("SELECT * FROM posts WHERE Id = @Id", new { Id = id });
-        //   if (posts != null)
-        //       return Results.Ok(posts);
-        //   else
-        //       return Results.NotFound();
-        //});
 
         //POST Reqests
 
@@ -83,7 +72,8 @@ public static class UserPosts
 
         // PUT REQUESTS
         // needs auth
-        group.MapPut("/IncrementLikes/{Id}", async (int Id, PostDto UserPost, [FromServices] MySqlConnection connection) =>
+        group.MapPut("/IncrementLikes/{Id}", 
+                async (int Id, PostDto UserPost, [FromServices] MySqlConnection connection) =>
         {
             // INC LIKES
             await connection.ExecuteAsync(@"
@@ -95,7 +85,8 @@ public static class UserPosts
             return Results.Ok(UserPost);
         });
         // needs auth
-        group.MapPut("/DecrementLikes/{Id}", async (int Id, PostDto UserPost, [FromServices] MySqlConnection connection) =>
+        group.MapPut("/DecrementLikes/{Id}", 
+                async (int Id, PostDto UserPost, [FromServices] MySqlConnection connection) =>
         {
             // INC LIKES
             await connection.ExecuteAsync(@"
@@ -109,7 +100,8 @@ public static class UserPosts
 
         // DELETE REQUESTS
 
-        group.MapDelete("/{Id}", async (int Id, [FromServices] MySqlConnection connection) =>
+        group.MapDelete("/{Id}", 
+                async (int Id, [FromServices] MySqlConnection connection) =>
         {
             await connection.ExecuteAsync("DELETE FROM posts WHERE Id = @Id", new { Id = Id });
 

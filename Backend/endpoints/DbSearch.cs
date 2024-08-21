@@ -31,17 +31,6 @@ public static class DbSearch
 
         });
 
-        //group.MapGet("/{id}",// NOT USED 
-        //        [Authorize]
-        //        (int id, [FromServices] MySqlConnection connection) =>
-        //{
-        //    var users = connection.Query<UserDtos>($"SELECT * FROM user WHERE Id = @Id", new { Id = id });
-        //    if (users.Any())
-        //        return Results.Ok(users);
-        //    else
-        //        return Results.NotFound();
-        //});
-
         group.MapGet("/userInformation/{id}",
                 [Authorize]
                 async (int id, [FromServices] MySqlConnection connection) => {
@@ -130,33 +119,6 @@ public static class DbSearch
               return Results.BadRequest();
             }
         });
-
-        // PUT REQUESTS
-        // NOT USED
-        /*group.MapPut("/{Id}", async (int Id, UserDtos updateUsers, [FromServices] MySqlConnection connection) => {
-            await connection.ExecuteAsync(@"
-            UPDATE user SET 
-                `FirstName` = @FirstName, 
-                `LastName` = @LastName, 
-                `Username` = @Usern, 
-                `Password` = @Password
-            WHERE Id = @Id",
-            new { FirstName = updateUsers.FirstName,
-                  LastName = updateUsers.LastName,
-                  Usern = updateUsers.UserName,
-                  Password = updateUsers.Password,
-                  Id = Id });
-
-            return Results.Ok(updateUsers);
-        });
-
-        // DELETE REQUESTS
-        // NOT USED
-        group.MapDelete("/{Id}", async (int Id, [FromServices] MySqlConnection connection) => {
-            await connection.ExecuteAsync("DELETE FROM user WHERE Id = @Id", new { Id = Id });
-
-            return Results.Ok();
-        });*/
 
         return group;
     }
