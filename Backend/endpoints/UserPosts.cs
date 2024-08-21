@@ -16,9 +16,9 @@ public static class UserPosts
 
         group.MapGet("/",
             [Authorize]
-        ([FromServices] MySqlConnection connection) =>
+        async ([FromServices] MySqlConnection connection) =>
             {
-                var posts = connection.Query<PostDto>("SELECT * FROM posts");
+                var posts = await connection.QueryAsync<PostDto>("SELECT * FROM posts");
                 if (posts != null)
                     return Results.Ok(posts);
                 else
@@ -49,15 +49,17 @@ public static class UserPosts
                 return Results.NotFound();
             }
         });
+        
+        // NOT USED
 
-        group.MapGet("/{id}", (int id, [FromServices] MySqlConnection connection) =>
-        {
-            var posts = connection.Query<PostDto>("SELECT * FROM posts WHERE Id = @Id", new { Id = id });
-            if (posts != null)
-                return Results.Ok(posts);
-            else
-                return Results.NotFound();
-        });
+        //group.MapGet("/{id}", (int id, [FromServices] MySqlConnection connection) =>
+        //{
+        //   var posts = connection.Query<PostDto>("SELECT * FROM posts WHERE Id = @Id", new { Id = id });
+        //   if (posts != null)
+        //       return Results.Ok(posts);
+        //   else
+        //       return Results.NotFound();
+        //});
 
         //POST Reqests
 
@@ -80,7 +82,7 @@ public static class UserPosts
         });
 
         // PUT REQUESTS
-
+        // needs auth
         group.MapPut("/IncrementLikes/{Id}", async (int Id, PostDto UserPost, [FromServices] MySqlConnection connection) =>
         {
             // INC LIKES
@@ -92,7 +94,7 @@ public static class UserPosts
 
             return Results.Ok(UserPost);
         });
-
+        // needs auth
         group.MapPut("/DecrementLikes/{Id}", async (int Id, PostDto UserPost, [FromServices] MySqlConnection connection) =>
         {
             // INC LIKES
