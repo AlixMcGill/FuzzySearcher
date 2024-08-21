@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\Backend.csproj": {}
+    "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\Backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\Backend.csproj": {
+    "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\Backend.csproj",
+        "projectUniqueName": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\Backend.csproj",
         "projectName": "Backend",
-        "projectPath": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\Backend.csproj",
+        "projectPath": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\Backend.csproj",
         "packagesPath": "C:\\Users\\Alix\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\obj\\",
+        "outputPath": "C:\\Users\\Alix\\Documents\\webDev\\csLearning\\AmericanEagleProject\\Backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Alix\\AppData\\Roaming\\NuGet\\NuGet.Config"
