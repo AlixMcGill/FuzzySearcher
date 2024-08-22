@@ -92,6 +92,12 @@ function createNewPost(parent, posts){
         post.className = 'post';
         post.id = posts[i].id;
 
+        const deletePost = document.createElement('span');
+        deletePost.className = 'material-symbols-outlined post-delete';
+        deletePost.innerText = 'delete';
+        deletePost.style.textAlign = 'right';
+        post.appendChild(deletePost);
+
         const postHeader = document.createElement('div');
         postHeader.className = 'post-header';
 
@@ -99,7 +105,7 @@ function createNewPost(parent, posts){
         postTitle.className = 'post-title';
         postTitle.innerText = posts[i].post_Title;
         postHeader.appendChild(postTitle);
-
+        
         post.appendChild(postHeader);
 
         const postBody = document.createElement('p');
@@ -136,6 +142,7 @@ function createNewPost(parent, posts){
         parent.appendChild(post);
     }
     loader.innerText = '';
+    deletePostButtonEvents();
 }
 
 async function fetchPosts(userId) {
@@ -152,7 +159,6 @@ async function fetchPosts(userId) {
                 Authorization: bearer,
                 "Content-Type": "application/json",
             },
-            cache: "force-cache"
         });
 
         if (!response.ok) {
@@ -174,4 +180,80 @@ function updateTotalProfileLikes() {
         totalLikes += parseInt(post.textContent);
     });
     totalLikesElement.innerText = totalLikes;
+}
+
+async function fetchPostDelete(postId, callback) {
+    const url = `${hostAddress}/UserPosts/${postId}`;
+    const jwtValue = getCookie('userJwt', 1);
+    const bearer = 'Bearer ' + jwtValue;
+    try {
+        const response = await fetch(url, {
+            method: "DELETE",
+            headers: {
+                Authorization: bearer
+            }
+        });
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        if (response.ok) {
+            callback();
+        }
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+
+function areYouSureDeletePopUp(parentId) {
+    document.body.style.overflow = 'hidden';
+    const parentEl = document.getElementById('delete-post-popup-parent');
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'wrap-delete-popup';
+
+    const container = document.createElement('div');
+    container.className = 'delete-post-popup-container';
+
+    const text = document.createElement('p');
+    text.innerText = 'Are you sure you would like to delete this post?';
+    text.className = 'delete-post-popup-text';
+
+    const buttonWrapper = document.createElement('div');
+    buttonWrapper.className = 'delete-post-btn-wrapper';
+
+    const buttonYes = document.createElement('button');
+    buttonYes.innerText = 'Yes';
+    buttonYes.className = 'delete-post-btn delete-post-popup-yes';
+    buttonYes.addEventListener('click', () => {
+        parentEl.innerHTML = '';
+        document.body.style.overflow = 'scroll';
+        fetchPostDelete(parentId,() => {
+            document.getElementById(parentId).remove();
+        });
+    });
+    
+    const buttonNo = document.createElement('button');
+    buttonNo.innerText = 'No';
+    buttonNo.className = 'delete-post-btn delete-post-popup-no';
+    buttonNo.addEventListener('click', () => {
+        parentEl.innerHTML = '';
+        document.body.style.overflow = 'scroll';
+    });
+
+    container.appendChild(text);
+    buttonWrapper.appendChild(buttonYes);
+    buttonWrapper.appendChild(buttonNo);
+    container.appendChild(buttonWrapper);
+    wrapper.appendChild(container);
+    parentEl.appendChild(wrapper);
+}
+
+function deletePostButtonEvents() {
+    const deletePosts = document.querySelectorAll('.post-delete');
+    console.log(deletePosts);
+    deletePosts.forEach(deleteBtn => {
+        deleteBtn.addEventListener('click', () => {
+            areYouSureDeletePopUp(deleteBtn.parentNode.id);
+        });
+    });
 }

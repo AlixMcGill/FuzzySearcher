@@ -44,3 +44,42 @@
     align-items: center;
     gap: .5rem;
 }
+
+.post-delete:hover {
+    cursor: pointer;
+    color: red;
+}
+
+.wrap-delete-popup {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+    backdrop-filter: blur(5px);
+}
+
+.delete-post-popup-container {
+    margin: auto;
+    padding: 2rem;
+    background-color: #003f5c;
+    border-radius: 1rem;
+    box-shadow: 4px 4px 10px 8px rgba(0,0,0,0.3);
+}
+
+.delete-post-btn-wrapper {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+
+.delete-post-btn {
+    width: 4rem;
+    height: 2rem;
+}
+
+.delete-post-btn:hover {
+    cursor: pointer;
+}
