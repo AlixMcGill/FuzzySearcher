@@ -100,7 +100,8 @@ public static class UserPosts
 
         // DELETE REQUESTS
 
-        group.MapDelete("/{Id}", 
+        group.MapDelete("/{Id}",
+                [Authorize]
                 async (int Id, [FromServices] MySqlConnection connection) =>
         {
             await connection.ExecuteAsync("DELETE FROM posts WHERE Id = @Id", new { Id = Id });
