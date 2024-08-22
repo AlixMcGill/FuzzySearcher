@@ -1,19 +1,19 @@
+import cookies from './modules/cookies.js';
+
 let usersArray;
 const hostAddress = "http://localhost:5273";
-checkAlreadyLoggedInAndReroute(getCookie("userJwt", 1), "/login.html");
+
+const cokie = new cookies;
+
+checkAlreadyLoggedInAndReroute(cokie.getCookie("userJwt", 1), "/login.html");
 const loader = document.getElementById("loader-ctrn");
-getUsernameId(getCookie("username", 1));
+
+getUsernameId(cokie.getCookie("username", 1));
 let loggedInUser = {
     id: "",
-    username: getCookie("username", 1),
+    username: cokie.getCookie("username", 1),
 };
 
-function getCookie(cookieName, index) {
-    return document.cookie
-        .split("; ")
-        .find((row) => row.startsWith(`${cookieName}=`))
-        ?.split("=")[index];
-}
 
 function checkAlreadyLoggedInAndReroute(cookie, route) {
     if (!cookie) {
@@ -90,7 +90,7 @@ async function fetchPosts() {
     const postContainer = document.getElementById("post-ctrn");
     postContainer.innerHTML = "";
     const url = `${hostAddress}/UserPosts`;
-    const jwtValue = getCookie("userJwt", 1);
+    const jwtValue = cokie.getCookie("userJwt", 1);
     const bearer = "Bearer " + jwtValue;
 
     try {
@@ -119,7 +119,7 @@ window.onload = function() {
 // Definitely not the best implementation
 async function getUsername() {
     const url = `${hostAddress}/DbSearch`;
-    const jwtValue = getCookie("userJwt", 1);
+    const jwtValue = cokie.getCookie("userJwt", 1);
     const bearer = "Bearer " + jwtValue;
 
     try {
@@ -347,7 +347,7 @@ function postNewUserPost(currentUserID) {
         const titleValue = title.value;
         const contentValue = content.value;
         const url = `${hostAddress}/UserPosts`;
-        const jwtValue = getCookie("userJwt", 1);
+        const jwtValue = cokie.getCookie("userJwt", 1);
         const bearer = "Bearer " + jwtValue;
 
         if (!isInputEmpty(title) && !isInputEmpty(content)) {
@@ -386,7 +386,7 @@ function postNewUserPost(currentUserID) {
 
 async function getUsernameId(usernameCookie) {
     const url = `${hostAddress}/DbSearch/filterbyusername=${usernameCookie}`;
-    const jwtValue = getCookie("userJwt", 1);
+    const jwtValue = cokie.getCookie("userJwt", 1);
     const bearer = "Bearer " + jwtValue;
 
     try {
@@ -574,7 +574,7 @@ async function searchPostsByTitle() {
     postContainer.innerHTML = "";
     resetLoader();
     const url = `${hostAddress}/UserPosts/filter=${searchValue}`;
-    const jwtValue = getCookie("userJwt", 1);
+    const jwtValue = cokie.getCookie("userJwt", 1);
     const bearer = "Bearer " + jwtValue;
 
     try {
@@ -603,7 +603,7 @@ async function searchPostsByTitle() {
 async function getNewUsernames() {
     usersArray = "";
     const url = `${hostAddress}/DbSearch`;
-    const jwtValue = getCookie("userJwt", 1);
+    const jwtValue = cokie.getCookie("userJwt", 1);
     const bearer = "Bearer " + jwtValue;
 
     try {
