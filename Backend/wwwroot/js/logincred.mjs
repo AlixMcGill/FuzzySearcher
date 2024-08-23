@@ -1,5 +1,8 @@
+import cookies from './modules/cookies.js';
+
+const cokie = new cookies;
 const hostAddress = 'http://localhost:5273';
-checkAlreadyLoggedInAndReroute(getCookie('userJwt', 1), '/index.html');
+checkAlreadyLoggedInAndReroute(cokie.getCookie('userJwt', 1), '/index.html');
 const username = document.getElementById("username-form");
 const password = document.getElementById("password-form");
 const submitBtn = document.getElementById("submit-login");
@@ -8,17 +11,6 @@ submitBtn.addEventListener('click', () => {
   sendLogin(username, password);
   cleanLoginForm(username, password);
 });
-
-function setCookie(cookieName, cookieValue, extraDays) {
-    const date = new Date();
-    date.setTime(date.getTime() + (extraDays * 24 * 60 * 60));
-    let expires = `max-age=${date.toUTCString}`;
-    document.cookie = `${cookieName}=${cookieValue};${expires};SameSite=None; Secure`;
-}
-
-function getCookie(cookieName, index) {
-    return document.cookie.split('; ').find((row) => row.startsWith(`${cookieName}=`))?.split("=")[index]
-}
 
 function checkAlreadyLoggedInAndReroute(cookie, route) {
     if (cookie) {
@@ -48,9 +40,9 @@ async function sendLogin(loginUsername, loginPassword) {
         }
 
         const jwt = await response.json();
-        setCookie("userJwt", jwt, 15);
-        setCookie("username", username, 15);
-        checkAlreadyLoggedInAndReroute(getCookie('userJwt', 1), '/index.html')
+        cokie.setCookie("userJwt", jwt, 15);
+        cokie.setCookie("username", username, 15);
+        checkAlreadyLoggedInAndReroute(cokie.getCookie('userJwt', 1), '/index.html')
 
     } catch (error) {
         console.error(error.message);
