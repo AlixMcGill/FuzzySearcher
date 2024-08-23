@@ -1,18 +1,16 @@
-// Really regretting not getting js modules working
+import cookies from './modules/cookies.js';
+
+const cokie = new cookies;
 const hostAddress = 'http://localhost:5273';
-checkAlreadyLoggedInAndReroute(getCookie('userJwt', 1), '/login.html')
+checkAlreadyLoggedInAndReroute(cokie.getCookie('userJwt', 1), '/login.html')
 const loader = document.getElementById('loader-ctrn');
 let loggedInUser = {
     id: '',
     firstName: '',
     lastName: '',
-    username: getCookie('username', 1)
+    username: cokie.getCookie('username', 1)
 }
-getUsernameId(getCookie('username', 1));
-
-function getCookie(cookieName, index) {
-    return document.cookie.split('; ').find((row) => row.startsWith(`${cookieName}=`))?.split("=")[index]
-}
+getUsernameId(cokie.getCookie('username', 1));
 
 function checkAlreadyLoggedInAndReroute(cookie, route) {
     if (!cookie) {
@@ -32,7 +30,7 @@ function populateUserAccount() {
 
 async function getUsernameId(usernameCookie) {
     const url = `${hostAddress}/DbSearch/filterbyusername=${usernameCookie}`;
-    const jwtValue = getCookie('userJwt', 1);
+    const jwtValue = cokie.getCookie('userJwt', 1);
     const bearer = 'Bearer ' + jwtValue;
 
     try {
@@ -59,7 +57,7 @@ async function getUsernameId(usernameCookie) {
 
 async function fetchUserInformation(idToFetch) {
     const url = `${hostAddress}/DbSearch/userInformation/${idToFetch}`;
-    const jwtValue = getCookie('userJwt', 1);
+    const jwtValue = cokie.getCookie('userJwt', 1);
     const bearer = 'Bearer ' + jwtValue;
 
     try {
@@ -149,7 +147,7 @@ async function fetchPosts(userId) {
     const postContainer = document.getElementById('user-posts-section')
     postContainer.innerHTML = '';
     const url = `${hostAddress}/UserPosts/Posts/${userId}`;
-    const jwtValue = getCookie('userJwt', 1);
+    const jwtValue = cokie.getCookie('userJwt', 1);
     const bearer = 'Bearer ' + jwtValue;
 
     try {
@@ -184,7 +182,7 @@ function updateTotalProfileLikes() {
 
 async function fetchPostDelete(postId, callback) {
     const url = `${hostAddress}/UserPosts/${postId}`;
-    const jwtValue = getCookie('userJwt', 1);
+    const jwtValue = cokie.getCookie('userJwt', 1);
     const bearer = 'Bearer ' + jwtValue;
     try {
         const response = await fetch(url, {
