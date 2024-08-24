@@ -1,10 +1,8 @@
 import cookies from './modules/cookies.js';
-
-let usersArray;
-const hostAddress = "http://localhost:5273";
-
+import api from './modules/apiCalls.js';
 const cokie = new cookies;
-
+const apiC = new api;
+let usersArray;
 checkAlreadyLoggedInAndReroute(cokie.getCookie("userJwt", 1), "/login.html");
 const loader = document.getElementById("loader-ctrn");
 
@@ -17,7 +15,7 @@ let loggedInUser = {
 
 function checkAlreadyLoggedInAndReroute(cookie, route) {
     if (!cookie) {
-        window.location = `${hostAddress}${route}`;
+        window.location = `${apiC.hostAddress}${route}`;
     }
 }
 
@@ -89,7 +87,7 @@ function createNewPost(parent, posts) {
 async function fetchPosts() {
     const postContainer = document.getElementById("post-ctrn");
     postContainer.innerHTML = "";
-    const url = `${hostAddress}/UserPosts`;
+    const url = `${apiC.hostAddress}/UserPosts`;
     const jwtValue = cokie.getCookie("userJwt", 1);
     const bearer = "Bearer " + jwtValue;
 
@@ -118,7 +116,7 @@ window.onload = function() {
 
 // Definitely not the best implementation
 async function getUsername() {
-    const url = `${hostAddress}/DbSearch`;
+    const url = `${apiC.hostAddress}/DbSearch`;
     const jwtValue = cokie.getCookie("userJwt", 1);
     const bearer = "Bearer " + jwtValue;
 
@@ -144,7 +142,7 @@ async function getUsername() {
 }
 
 async function incrementLikes(postId) {
-    url = `${hostAddress}/UserPosts/IncrementLikes/${postId}`;
+    url = `${apiC.hostAddress}/UserPosts/IncrementLikes/${postId}`;
 
     try {
         const response = await fetch(url, {
@@ -164,7 +162,7 @@ async function incrementLikes(postId) {
 }
 
 async function decrementLikes(postId) {
-    url = `${hostAddress}/UserPosts/DecrementLikes/${postId}`;
+    url = `${apiC.hostAddress}/UserPosts/DecrementLikes/${postId}`;
 
     try {
         const response = await fetch(url, {
@@ -262,7 +260,6 @@ function createPostForm() {
     createPostContainer.appendChild(createPostInputLabel);
 
     const createPostInput = document.createElement("textarea");
-    createPostInput.type = "text";
     createPostInput.className = "create-post-text";
     createPostInput.id = "create-post-text";
     createPostInput.rows = "5";
@@ -346,7 +343,7 @@ function postNewUserPost(currentUserID) {
         const content = document.getElementById("create-post-text");
         const titleValue = title.value;
         const contentValue = content.value;
-        const url = `${hostAddress}/UserPosts`;
+        const url = `${apiC.hostAddress}/UserPosts`;
         const jwtValue = cokie.getCookie("userJwt", 1);
         const bearer = "Bearer " + jwtValue;
 
@@ -385,7 +382,7 @@ function postNewUserPost(currentUserID) {
 }
 
 async function getUsernameId(usernameCookie) {
-    const url = `${hostAddress}/DbSearch/filterbyusername=${usernameCookie}`;
+    const url = `${apiC.hostAddress}/DbSearch/filterbyusername=${usernameCookie}`;
     const jwtValue = cokie.getCookie("userJwt", 1);
     const bearer = "Bearer " + jwtValue;
 
@@ -573,7 +570,7 @@ async function searchPostsByTitle() {
     const searchValue = document.getElementById("search-post-text-input").value;
     postContainer.innerHTML = "";
     resetLoader();
-    const url = `${hostAddress}/UserPosts/filter=${searchValue}`;
+    const url = `${apiC.hostAddress}/UserPosts/filter=${searchValue}`;
     const jwtValue = cokie.getCookie("userJwt", 1);
     const bearer = "Bearer " + jwtValue;
 
@@ -602,7 +599,7 @@ async function searchPostsByTitle() {
 
 async function getNewUsernames() {
     usersArray = "";
-    const url = `${hostAddress}/DbSearch`;
+    const url = `${apiC.hostAddress}/DbSearch`;
     const jwtValue = cokie.getCookie("userJwt", 1);
     const bearer = "Bearer " + jwtValue;
 

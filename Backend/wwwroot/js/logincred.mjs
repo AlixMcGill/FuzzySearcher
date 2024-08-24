@@ -1,7 +1,7 @@
 import cookies from './modules/cookies.js';
-
+import api from './modules/apiCalls.js';
 const cokie = new cookies;
-const hostAddress = 'http://localhost:5273';
+const apiC = new api;
 checkAlreadyLoggedInAndReroute(cokie.getCookie('userJwt', 1), '/index.html');
 const username = document.getElementById("username-form");
 const password = document.getElementById("password-form");
@@ -14,14 +14,14 @@ submitBtn.addEventListener('click', () => {
 
 function checkAlreadyLoggedInAndReroute(cookie, route) {
     if (cookie) {
-        window.location = `${hostAddress}${route}`;
+        window.location = `${apiC.hostAddress}${route}`;
     }
 }
 
 async function sendLogin(loginUsername, loginPassword) {
     let username = loginUsername.value;
     let password = loginPassword.value;
-    let url = `${hostAddress}/DbSearch/Login`;
+    let url = `${apiC.hostAddress}/DbSearch/Login`;
 
     try {
         const response = await fetch(url,{

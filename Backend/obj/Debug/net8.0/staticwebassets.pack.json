@@ -45,13 +45,12 @@
       "PackagePath": "staticwebassets\\js\\logincred.mjs"
     },
     {
-<<<<<<< Updated upstream
-      "Id": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\js\\modules\\cookies.js",
-      "PackagePath": "staticwebassets\\js\\modules\\cookies.js"
-=======
       "Id": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\js\\modules\\apiCalls.js",
       "PackagePath": "staticwebassets\\js\\modules\\apiCalls.js"
->>>>>>> Stashed changes
+    },
+    {
+      "Id": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\js\\modules\\cookies.js",
+      "PackagePath": "staticwebassets\\js\\modules\\cookies.js"
     },
     {
       "Id": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\js\\profile.js",

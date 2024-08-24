@@ -1,7 +1,7 @@
 import cookies from './modules/cookies.js';
-
+import api from './modules/apiCalls.js';
 const cokie = new cookies;
-const hostAddress = 'http://localhost:5273';
+const apiC = new api;
 checkAlreadyLoggedInAndReroute(cokie.getCookie('userJwt', 1), '/login.html')
 const loader = document.getElementById('loader-ctrn');
 let loggedInUser = {
@@ -14,7 +14,7 @@ getUsernameId(cokie.getCookie('username', 1));
 
 function checkAlreadyLoggedInAndReroute(cookie, route) {
     if (!cookie) {
-        window.location = `${hostAddress}${route}`;
+        window.location = `${apiC.hostAddress}${route}`;
     }
 }
 
@@ -29,7 +29,7 @@ function populateUserAccount() {
 }
 
 async function getUsernameId(usernameCookie) {
-    const url = `${hostAddress}/DbSearch/filterbyusername=${usernameCookie}`;
+    const url = `${apiC.hostAddress}/DbSearch/filterbyusername=${usernameCookie}`;
     const jwtValue = cokie.getCookie('userJwt', 1);
     const bearer = 'Bearer ' + jwtValue;
 
@@ -56,7 +56,7 @@ async function getUsernameId(usernameCookie) {
 }
 
 async function fetchUserInformation(idToFetch) {
-    const url = `${hostAddress}/DbSearch/userInformation/${idToFetch}`;
+    const url = `${apiC.hostAddress}/DbSearch/userInformation/${idToFetch}`;
     const jwtValue = cokie.getCookie('userJwt', 1);
     const bearer = 'Bearer ' + jwtValue;
 
@@ -146,7 +146,7 @@ function createNewPost(parent, posts){
 async function fetchPosts(userId) {
     const postContainer = document.getElementById('user-posts-section')
     postContainer.innerHTML = '';
-    const url = `${hostAddress}/UserPosts/Posts/${userId}`;
+    const url = `${apiC.hostAddress}/UserPosts/Posts/${userId}`;
     const jwtValue = cokie.getCookie('userJwt', 1);
     const bearer = 'Bearer ' + jwtValue;
 
@@ -181,7 +181,7 @@ function updateTotalProfileLikes() {
 }
 
 async function fetchPostDelete(postId, callback) {
-    const url = `${hostAddress}/UserPosts/${postId}`;
+    const url = `${apiC.hostAddress}/UserPosts/${postId}`;
     const jwtValue = cokie.getCookie('userJwt', 1);
     const bearer = 'Bearer ' + jwtValue;
     try {
@@ -248,7 +248,6 @@ function areYouSureDeletePopUp(parentId) {
 
 function deletePostButtonEvents() {
     const deletePosts = document.querySelectorAll('.post-delete');
-    console.log(deletePosts);
     deletePosts.forEach(deleteBtn => {
         deleteBtn.addEventListener('click', () => {
             areYouSureDeletePopUp(deleteBtn.parentNode.id);

@@ -1,5 +1,6 @@
-const hostAddress = 'http://localhost:5273';
+import api from './modules/apiCalls.js';
 
+const apiC = new api;
 const createAccBtn = document.getElementById('create-acc-button');
 const newAccContainer = document.getElementById('new-account-container');
 
@@ -78,7 +79,7 @@ function checkMatchingPasswords(passwordOne, passwordTwo) {
 }
 
 async function checkExsitingUsername(username) {
-    const url = `${hostAddress}/DbSearch/filter=${username}`
+    const url = `${apiC.hostAddress}/DbSearch/filter=${username}`
     try {
         const response = await fetch(url, {
            method: "GET"
@@ -101,7 +102,7 @@ async function postNewAccount() {
     const username = document.getElementById('create-account-username-id').value;
     const passwordOne = document.getElementById('create-account-password-id').value;
     const passwordTwo = document.getElementById('create-account-password-reenter-id').value;
-    const url = `${hostAddress}/DbSearch`
+    const url = `${apiC.hostAddress}/DbSearch`
     if (checkMatchingPasswords(passwordOne, passwordTwo) && await checkExsitingUsername(username)) {
         try { 
             const response = await fetch(url, {
