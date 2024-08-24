@@ -5,6 +5,17 @@
 - Have a form on the page that submits to the database.
 - Have a page behind a member login.
 
+## Project Stack
+- Frontend
+  - Vanilla Html, Css, Js
+- Database
+  - MySql
+- Backend
+  - Asp.Net
+  - Minimal api for request handling
+  - Dapper for database querys
+  - Jwt for auth
+
 ## Project Walkthough
 
 ### User Login
@@ -51,5 +62,5 @@
 
 <p align="center">Users can like and unlike posts. user likes do not persist on reload/relogin in current implementation. But post likes are tracked and updated in the database.</p>
 
-## What Have I Learned
-- 
+## Key Takeaways
+- <p align="center"></p>
