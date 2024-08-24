@@ -1,6 +1,10 @@
 {
   "Version": 1,
+<<<<<<< Updated upstream
   "Hash": "eU9B/fEQNA1CtcBVJavIfqSnNyFE3oe3+tBIas7Bsuw=",
+=======
+  "Hash": "N1lRnNR5IAhNm6zG17KptEX7aneAl/B3voS81ILWdnE=",
+>>>>>>> Stashed changes
   "Source": "Backend",
   "BasePath": "_content/Backend",
   "Mode": "Default",
@@ -226,12 +230,20 @@
       "OriginalItemSpec": "wwwroot\\js\\logincred.mjs"
     },
     {
+<<<<<<< Updated upstream
       "Identity": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\js\\modules\\cookies.js",
+=======
+      "Identity": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\js\\modules\\apiCalls.js",
+>>>>>>> Stashed changes
       "SourceId": "Backend",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\",
       "BasePath": "_content/Backend",
+<<<<<<< Updated upstream
       "RelativePath": "js/modules/cookies.js",
+=======
+      "RelativePath": "js/modules/apiCalls.js",
+>>>>>>> Stashed changes
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -242,7 +254,11 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
+<<<<<<< Updated upstream
       "OriginalItemSpec": "wwwroot\\js\\modules\\cookies.js"
+=======
+      "OriginalItemSpec": "wwwroot\\js\\modules\\apiCalls.js"
+>>>>>>> Stashed changes
     },
     {
       "Identity": "C:\\Users\\Alix\\documents\\webdev\\cslearning\\americaneagleproject\\backend\\wwwroot\\js\\profile.js",
