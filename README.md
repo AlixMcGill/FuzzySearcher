@@ -62,5 +62,14 @@
 
 <p align="center">Users can like and unlike posts. user likes do not persist on reload/relogin in current implementation. But post likes are tracked and updated in the database.</p>
 
-## Key Takeaways
-- <p align="center"></p>
+## Unimplemented Features
+<p align="center">I did not want to stray too far from the project requirements. However, here are some features I would have liked to implement but decided against, given the context.</p>
+
+- Persisted likes per user.
+- Individual profile pages when you click on a username inside a post.
+- User bios.
+- lazy loading posts (i.e. only loads 10 posts at a time. When the user scrolls to bottom of the page another 10 will be loaded.)
+- some kind of following system
+
+## Key Takeaways / Issues
+- <p align="center">I am almost certain i've implemented the Jwt wrong. It works but having a seperate cookie to store the username to create other api calls definately feels wrong.</p>
