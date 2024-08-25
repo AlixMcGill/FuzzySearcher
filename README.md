@@ -70,6 +70,9 @@
 - User bios.
 - lazy loading posts (i.e. only loads 10 posts at a time. When the user scrolls to bottom of the page another 10 will be loaded.)
 - some kind of following system
+- salted and hashed passwords
 
 ## Key Takeaways / Issues
 - <p align="center">I am almost certain i've implemented the Jwt wrong. It works but having a seperate cookie to store the username to create other api calls definately feels wrong.</p>
+- <p align="center">This was the first simple CRUD app I've created and has definitely widened my view.</p>
+- <p align="center">If I were to create this project again, I would definitely do a few things differently given my current knowledge. First, when retrieving the posts, I would set up my database queries differently. In the current implementation, I’m grabbing all the post information first and then fetching the usernames in subsequent HTTP requests. This should realistically be done in a single request and returned together. I could definitely see that becoming quite expensive if this were a scaling project. Second, I should have had better planning or workflow organization. There were definitely times when working on this project when, after completing a section, I did not know how to implement the next part or had to spend unnecessary time figuring out the next step. If I were to plan out my projects ahead of time, I would know before even starting which areas I need to read up on and could plan accordingly. Because of my approach, I ended up having to rewrite various aspects of the codebase in other files because I did not take the time to fully flesh out a comprehensive plan for the project.</p>
